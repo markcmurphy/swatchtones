@@ -1,3 +1,52 @@
 body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   background-color: lightgreen;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: BlanchedAlmond;
+  border-radius: 5px;
+}
+
+header {
+  text-align: center;
+  font-size: 50px;
+  color: #4d5052;
+  background-color: pink;
+}
+
+main {
+  flex: 1;
+}
+
+nav {
+  order: -1;
+}
+
+nav, aside {
+  background-color: Violet;
+}
+
+.survivor {
+  margin: 5px;
+  padding: 5px 15px 5px 15px;
+  background-color: plum;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    flex: 1;
+    background-color: aquamarine;
+  }
+  nav, aside {
+    flex: 0 0 12em;
+  }
 }
