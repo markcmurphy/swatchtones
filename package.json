@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/markcmurphy/swatchtones/issues"
   },
-  "homepage": "https://github.com/markcmurphy/swatchtones#readme"
+  "homepage": "https://github.com/markcmurphy/swatchtones#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongoose": "^4.11.11"
+  }
 }
