@@ -13,10 +13,26 @@ app.controller('mainController', ['$http', function($http) {
       this.products = response.data;
     })
     .catch(err => console.log(err));
-    console.log('error');
   }
 
-  this.getProducts();
+  this.searchForm = () => {
+    $http({
+      method: 'POST',
+      url: 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=' + this.formdata.brand
+    }).then(response => {
+      console.log('search');
+      console.log(response.data);
+    })
+    .catch(err => console.log(err));
+  }
+
+// form submit
+  this.processForm = function() {
+    console.log('processForm function . . .');
+    console.log('Formdata: ', this.formdata);
+  }
+
+this.getProducts();
 
 //  end of mainController
 }]);

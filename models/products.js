@@ -8,9 +8,10 @@ const productSchema = mongoose.Schema({
   productLink: String,
   description: String,
   productType: String,
-  productColors: []
+  productColor: String,
+  swatches: []
 })
 
-const Products = mongoose.model('Product, productSchema');
+const Products = mongoose.model('Product', productSchema);
 
 module.exports = Products;

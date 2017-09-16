@@ -4,12 +4,8 @@ const mongoose = require('mongoose');
 
 app.use(express.static('public'));
 
-
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);
-
-
-
 
 mongoose.connect('mongodb://localhost:27017/swatches');
 mongoose.connection.once('open', ()=> {
