@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
   description: String,
   productType: String,
   productColor: String,
-  swatches: []
+  swatches: [ ]
 })
 
 const Products = mongoose.model('Product', productSchema);

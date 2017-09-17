@@ -19,16 +19,16 @@
   <div class="container">
     <main>
       <!-- the rest of the main is sample text  -->
-      <span>
-        <h4>{{ctrl.products[1].name}}</h4>
+      <span ng-repeat="product in ctrl.products">
+        <h4>{{product.productName}}</h4>
       </span>
     </main>
 
     <nav>
       <h4 ng-click="toggle_form = !toggle_form">Upload</h4>
         <form ng-show="toggle_form" ng-submit="ctrl.processForm()">
-        <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
-        <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="link"/>
+        <input type="text" ng-model="ctrl.productBrand" placeholder="brand"/>
+        <input type="text" ng-model="ctrl.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>

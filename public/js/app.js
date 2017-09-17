@@ -8,7 +8,7 @@ app.controller('mainController', ['$http', function($http) {
   this.getProducts = () => {
     $http({
       method: 'GET',
-      url: 'http://makeup-api.herokuapp.com/api/v1/products.json'
+      url: '/products'
     }).then(response => {
       this.products = response.data;
     })
@@ -28,9 +28,20 @@ app.controller('mainController', ['$http', function($http) {
 
 // form submit
   this.processForm = function() {
-    console.log('processForm function . . .');
-    console.log('Formdata: ', this.formdata);
+    $http({
+      method: 'POST',
+      url: '/products',
+      data: {
+        Id: this._id,
+        productName: this.productName,
+        productBrand: this.productBrand
+      }
+    }).then(response => {
+      console.log(response.data);
+    })
+    .catch(err => console.log(err));
   }
+
 
 this.getProducts();
 
