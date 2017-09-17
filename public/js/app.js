@@ -50,6 +50,7 @@ app.controller('mainController', ['$http', function($http) {
       }
     }).then(response => {
       console.log(response.data);
+      this.getProducts();
     })
     .catch(err => console.log(err));
   }
@@ -67,15 +68,13 @@ app.controller('mainController', ['$http', function($http) {
         skinTone: this.skinTone
       }
     }).then(response => {
-      console.log('post swatch ran');
       console.log(response.data);
+      this.getSwatches();
     })
     .catch(err => console.log(err));
   }
 
 this.getSwatches();
-
-
 this.getProducts();
 
 //  end of mainController
