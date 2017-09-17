@@ -9,6 +9,7 @@ router.get('/', (req, res)=> {
   });
 });
 
+// Get product by ID
 router.get('/:id', (req, res)=>{
     Products.findById(req.params.id, (err, foundProducts)=>{
       res.json(foundProducts);

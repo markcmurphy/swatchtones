@@ -15,16 +15,16 @@ app.controller('mainController', ['$http', function($http) {
     .catch(err => console.log(err));
   }
 
-  this.searchForm = () => {
-    $http({
-      method: 'POST',
-      url: 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=' + this.formdata.brand
-    }).then(response => {
-      console.log('search');
-      console.log(response.data);
-    })
-    .catch(err => console.log(err));
-  }
+  // this.searchForm = () => {
+  //   $http({
+  //     method: 'POST',
+  //     url: 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=' + this.formdata.brand
+  //   }).then(response => {
+  //     console.log('search');
+  //     console.log(response.data);
+  //   })
+  //   .catch(err => console.log(err));
+  // }
 
 // form submit
   this.processForm = function() {
