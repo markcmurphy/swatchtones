@@ -4,6 +4,18 @@ console.log('app.js');
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
   this.products = {};
+  this.swatches = {};
+
+  this.getSwatches = () => {
+    $http({
+      method: 'GET',
+      url: '/swatches'
+    }).then(response => {
+      console.log('get swatches ran');
+      this.swatches = response.data;
+    })
+    .catch(err => console.log(err));
+  }
 
   this.getProducts = () => {
     $http({
@@ -26,7 +38,7 @@ app.controller('mainController', ['$http', function($http) {
   //   .catch(err => console.log(err));
   // }
 
-// form submit
+// form submit for products
   this.processForm = function() {
     $http({
       method: 'POST',
@@ -41,6 +53,27 @@ app.controller('mainController', ['$http', function($http) {
     })
     .catch(err => console.log(err));
   }
+
+  // form submit for swatches
+  this.processSwatch = () => {
+    $http({
+      method: 'POST',
+      url: '/swatches',
+      data: {
+        Id: this._id,
+        product: this.product,
+        imageLink: this.imageLink,
+        productColor: this.productColor,
+        skinTone: this.skinTone
+      }
+    }).then(response => {
+      console.log('post swatch ran');
+      console.log(response.data);
+    })
+    .catch(err => console.log(err));
+  }
+
+this.getSwatches();
 
 
 this.getProducts();

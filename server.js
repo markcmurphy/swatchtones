@@ -10,6 +10,9 @@ app.use(express.static('public'));
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);
 
+const swatchesController = require('./controllers/swatches.js');
+app.use('/swatches', swatchesController);
+
 mongoose.connect('mongodb://localhost:27017/swatches');
 mongoose.connection.once('open', ()=> {
   console.log('connected to mongoose..');

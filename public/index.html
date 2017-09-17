@@ -25,11 +25,12 @@
     </main>
 
     <nav>
-      <h4 ng-click="toggle_form = !toggle_form">Upload</h4>
+      <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
         <form ng-show="toggle_form" ng-submit="ctrl.processForm()">
         <input type="text" ng-model="ctrl.productBrand" placeholder="brand"/>
         <input type="text" ng-model="ctrl.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
+      </form>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>
         <form ng-show="toggle_form" ng-submit="ctrl.searchForm()">
@@ -38,8 +39,13 @@
     </nav>
 
     <aside>
-      <!-- testing, can be deleted -->
-      Aside
+      <h4>New Swatch</h4>
+        <form ng-submit="ctrl.processSwatch()">
+        <input type="text" ng-model="ctrl.product" placeholder="product"/>
+        <input type="text" ng-model="ctrl.imageLink" placeholder="image"/>
+        <input type="text" ng-model="ctrl.skinTone" placeholder="skin tone"/>
+        <button class="submit btn btn-primary" type="submit" /> Submit </button>
+      </form>
     </aside>
 
     <!-- end of "container" -->
