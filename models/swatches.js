@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const Product = require('./products.js');
 
 const swatchSchema = mongoose.Schema({
-  product: String,
   imageLink: String,
   productColor: String,
-  skinTone: String
+  skinTone: String,
+  product: String
   // userSubmitted: [User.schema]
 })
 

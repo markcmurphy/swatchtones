@@ -65,7 +65,8 @@ app.controller('mainController', ['$http', function($http) {
         product: this.product,
         imageLink: this.imageLink,
         productColor: this.productColor,
-        skinTone: this.skinTone
+        skinTone: this.skinTone,
+        productId: this.productId
       }
     }).then(response => {
       console.log(response.data);

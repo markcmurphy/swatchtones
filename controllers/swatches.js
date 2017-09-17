@@ -13,15 +13,29 @@ router.get('/', (req, res)=> {
 // Get swatch by ID
 router.get('/:id', (req, res)=>{
     Swatches.findById(req.params.id, (err, foundSwatches)=>{
-      res.json(foundSwatches);
+      Products.findOne({'swatches._id':req.params.id}, (err, foundProduct)=>{
+        res.json(foundSwatches);
+      })
   });
 });
 
+
+router.get('/:id', (req, res)=>{
+    Products.findById(req.params.id, (err, foundProducts)=>{
+      res.json(foundProducts);
+  });
+});
 //Create Swatch
-router.post('/', (req, res)=>{
-  console.log(req.body);
-  Swatches.create(req.body, (err, createdSwatch)=>{
-    res.json(createdSwatch);
+router.post('/', (req, res) => {
+  Products.findById(req.body.productId, (err, foundProducts) => {
+    console.log(req.body.productId);
+    console.log(foundProducts);
+    Swatches.create(req.body, (err, createdSwatch) => {
+        res.json(createdSwatch);
+        foundProducts.swatches.push(createdSwatch);
+        foundProducts.save((err, data) => {
+      });
+    });
   });
 });
 
