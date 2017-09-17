@@ -9,6 +9,12 @@ router.get('/', (req, res)=> {
   });
 });
 
+router.get('/:id', (req, res)=>{
+    Products.findById(req.params.id, (err, foundProducts)=>{
+      res.json(foundProducts);
+  });
+});
+
 //Create product
 router.post('/', (req, res)=>{
   console.log(req.body);
