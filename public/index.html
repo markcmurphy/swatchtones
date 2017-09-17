@@ -19,8 +19,11 @@
   <div class="container">
     <main>
       <!-- the rest of the main is sample text  -->
-      <span ng-repeat="product in ctrl.products">
+      <!-- <span ng-repeat="product in ctrl.products">
         <h4>{{product.productName}} - {{product._id}}</h4>
+      </span> -->
+      <span ng-repeat="swatch in ctrl.swatches">
+        <h4>{{swatch.product}} <img src="{{swatch.imageLink}}" alt=""></h4>
       </span>
     </main>
 

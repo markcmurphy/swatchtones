@@ -50,3 +50,9 @@ nav, aside {
     flex: 0 0 12em;
   }
 }
+
+/*the following code is being used for testing and may be deleted*/
+img {
+  height: 60px;
+  width: auto;
+}
