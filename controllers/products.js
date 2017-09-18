@@ -20,18 +20,13 @@ router.get('/:id', (req, res)=>{
 //Create product
 router.post('/', (req, res)=>{
   console.log(req.body);
+
   Products.create(req.body, (err, createdProduct)=>{
     res.json(createdProduct);
   });
 });
 
 //Delete product
-// router.delete('/:id', (req, res)=>{
-//   Products.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
-//     res.json(deletedProduct);
-//   })
-// })
-
 router.delete('/:id', (req, res)=>{
 	Products.findByIdAndRemove(req.params.id, (err, foundProduct)=>{
 		const swatchesIds = [];
@@ -53,7 +48,7 @@ router.delete('/:id', (req, res)=>{
 	});
 });
 
-//Update product
+//edit product
 router.put('/:id', (req, res)=>{
   Products.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedProduct)=>{
     res.json(updatedProduct);

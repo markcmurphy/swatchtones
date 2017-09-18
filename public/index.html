@@ -19,9 +19,17 @@
   <div class="container">
     <main>
       <div class="product" ng-repeat="product in ctrl.products">
-        <h4>{{product.productName}} - {{product._id}}</h4>
-        <small ng-click="ctrl.deleteProduct(product)">delete</small>
+        <h4>{{product.productBrand}}<br>{{product.productName}}</h4>
+        <button class="delete-button"ng-click="ctrl.deleteProduct(product)">delete</button>
+
+        <button class="edit-button" ng-click="ctrl.editformshow = true">Edit</button>
+          <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
+            <input type="text" ng-model="ctrl.productBrand" placeholder="{{product.productBrand}}">
+            <input type="text" ng-model="ctrl.productName" placeholder="{{ctrl.productName}}">
+            <input type="submit" ng-click="ctrl.editformshow=false">
+          </form>
       </div>
+
       <div class="swatch" ng-repeat="swatch in ctrl.swatches">
         <h4>{{swatch.product}} {{swatch._id}}</h4>
         <img src="{{swatch.imageLink}}" alt="">
@@ -31,10 +39,12 @@
 
     <nav>
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
-        <form ng-show="toggle_form" ng-submit="ctrl.processForm()">
-        <input type="text" ng-model="ctrl.productBrand" placeholder="brand"/>
-        <input type="text" ng-model="ctrl.productName" placeholder="name"/>
+        <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
+        <input type="text" ng-model="ctrl.formdata.productBrand" placeholder="brand"/>
+        <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
+        {{ctrl.formdata}}
+        <!-- <input  type="button" name="reset" value="reset" ng-click="form.reset()"> -->
       </form>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>

@@ -5,6 +5,8 @@ app.controller('mainController', ['$http', function($http) {
   const controller = this;
   this.products = {};
   this.swatches = {};
+  this.formdata = {};
+
 
 // get swatches
   this.getSwatches = () => {
@@ -28,6 +30,27 @@ app.controller('mainController', ['$http', function($http) {
     })
     .catch(err => console.log(err));
   }
+
+// edit product
+  this.editProduct = function(product) {
+     $http({
+       method: 'PUT',
+       url: '/products/' + product._id,
+       data: {
+         Id: this._id,
+         productName: this.productName,
+         productBrand: this.productBrand
+       }
+     }).then(
+       function(res) {
+         controller.getProducts();
+         controller.getSwatches();
+       },
+       function(err) {
+         console.log(err);
+       }
+     );
+   },
 
 // delete swatch
   this.deleteSwatch = (swatch) => {
@@ -78,11 +101,12 @@ app.controller('mainController', ['$http', function($http) {
       url: '/products',
       data: {
         Id: this._id,
-        productName: this.productName,
-        productBrand: this.productBrand
+        productName: this.formdata.productName,
+        productBrand: this.formdata.productBrand
       }
     }).then(response => {
       console.log(response.data);
+      controller.formdata = {};
       this.getProducts();
     })
     .catch(err => console.log(err));
