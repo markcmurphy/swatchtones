@@ -6,6 +6,7 @@ app.controller('mainController', ['$http', function($http) {
   this.products = {};
   this.swatches = {};
 
+// get swatches
   this.getSwatches = () => {
     $http({
       method: 'GET',
@@ -17,6 +18,7 @@ app.controller('mainController', ['$http', function($http) {
     .catch(err => console.log(err));
   }
 
+// get products
   this.getProducts = () => {
     $http({
       method: 'GET',
@@ -26,6 +28,36 @@ app.controller('mainController', ['$http', function($http) {
     })
     .catch(err => console.log(err));
   }
+
+// delete swatch
+  this.deleteSwatch = (swatch) => {
+  $http({
+    method: 'DELETE',
+    url: '/swatches/' + swatch._id
+  }).then(
+    function(res) {
+      controller.getSwatches();
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
+},
+
+// delete product
+  this.deleteProduct = (product) => {
+  $http({
+    method: 'DELETE',
+    url: '/products/' + product._id
+  }).then(
+    function(res) {
+      controller.getProducts();
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
+},
 
   // this.searchForm = () => {
   //   $http({

@@ -18,13 +18,15 @@
 
   <div class="container">
     <main>
-      <!-- the rest of the main is sample text  -->
-      <!-- <span ng-repeat="product in ctrl.products">
+      <div class="product" ng-repeat="product in ctrl.products">
         <h4>{{product.productName}} - {{product._id}}</h4>
-      </span> -->
-      <span ng-repeat="swatch in ctrl.swatches">
-        <h4>{{swatch.product}} <img src="{{swatch.imageLink}}" alt=""></h4>
-      </span>
+        <small ng-click="ctrl.deleteProduct(product)">delete</small>
+      </div>
+      <div class="swatch" ng-repeat="swatch in ctrl.swatches">
+        <h4>{{swatch.product}} {{swatch._id}}</h4>
+        <img src="{{swatch.imageLink}}" alt="">
+        <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
+      </div>
     </main>
 
     <nav>

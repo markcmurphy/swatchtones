@@ -56,3 +56,11 @@ img {
   height: 60px;
   width: auto;
 }
+
+.product {
+  background-color: DeepSkyBlue;
+}
+
+.swatch {
+  background-color: HoneyDew;
+}

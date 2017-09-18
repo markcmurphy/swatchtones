@@ -19,13 +19,6 @@ router.get('/:id', (req, res)=>{
   });
 });
 
-
-router.get('/:id', (req, res)=>{
-    Products.findById(req.params.id, (err, foundProducts)=>{
-      res.json(foundProducts);
-  });
-});
-
 //Create Swatch
 router.post('/', (req, res) => {
   Products.findById(req.body.productId, (err, foundProducts) => {
