@@ -25,6 +25,7 @@ router.get('/:id', (req, res)=>{
       res.json(foundProducts);
   });
 });
+
 //Create Swatch
 router.post('/', (req, res) => {
   Products.findById(req.body.productId, (err, foundProducts) => {
