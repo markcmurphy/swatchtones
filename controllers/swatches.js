@@ -14,6 +14,7 @@ router.get('/', (req, res)=> {
 router.get('/:id', (req, res)=>{
     Swatches.findById(req.params.id, (err, foundSwatches)=>{
       Products.findOne({'swatches._id':req.params.id}, (err, foundProduct)=>{
+        console.log(foundProduct);
         res.json(foundSwatches);
       })
   });

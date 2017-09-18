@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Products = require('../models/products.js')
+const Products = require('../models/products.js');
+const Swatches = require('../models/swatches.js');
 
 // Index
 router.get('/', (req, res)=> {
@@ -25,11 +26,32 @@ router.post('/', (req, res)=>{
 });
 
 //Delete product
+// router.delete('/:id', (req, res)=>{
+//   Products.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
+//     res.json(deletedProduct);
+//   })
+// })
+
 router.delete('/:id', (req, res)=>{
-  Products.findByIdAndRemove(req.params.id, (err, deletedProduct)=>{
-    res.json(deletedProduct);
-  })
-})
+	Products.findByIdAndRemove(req.params.id, (err, foundProduct)=>{
+		const swatchesIds = [];
+
+		for (let i = 0; i < foundProduct.swatches.length; i++) {
+			swatchesIds.push(foundProduct.swatches[i]._id);
+		}
+		Swatches.remove(
+			{
+				_id : {
+					$in: swatchesIds
+				}
+			},
+			(err, data)=>{
+        console.log(swatchesIds);
+        res.json(foundProduct)
+			}
+		);
+	});
+});
 
 //Update product
 router.put('/:id', (req, res)=>{

@@ -52,6 +52,7 @@ app.controller('mainController', ['$http', function($http) {
   }).then(
     function(res) {
       controller.getProducts();
+      controller.getSwatches();
     },
     function(err) {
       console.log(err);
