@@ -21,9 +21,11 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "express-sessions": "^1.0.6",
+    "jsonwebtoken": "^8.0.1",
     "mongoose": "^4.11.11",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"

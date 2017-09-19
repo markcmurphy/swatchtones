@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const jwt = require('jsonwebtoken');
 const User = require('../models/users.js');
+const fs = require('fs');
+const app = express();
+require('dotenv').config();
 
 // authentication
 // router.get('/retrieve', function(req, res){ //any route will work
@@ -63,19 +65,27 @@ router.post('/register', (req, res, next) => {
   });
 });
 
-// router.post('/login',
-//   passport.authenticate('local', { successRedirect: '/',
-//                                    failureRedirect: '/login' }));
-
-
 router.post('/login', (req, res, next) => {
   User.findOne({email: req.body.email}, (err, foundUser) => {
+		console.log(foundUser);
       if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
 					req.session.email = req.body.email;
 					req.session.currentuser = foundUser;
 					req.session.logged = true;
-        	res.json(foundUser);
+
+					var token = jwt.sign({data:foundUser}, process.env.JWT_SECRET, {
+          expiresIn: 1440
+        });
+
+        res.json({
+          success: true,
+          message: 'Enjoy your token!',
+          token: token,
+					foundUser
+					});
+
+        	// res.json(foundUser);
             } else {
               console.log('else in bcrypt compare');
               req.session.message = 'email or password are incorrect';

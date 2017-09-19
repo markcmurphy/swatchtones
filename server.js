@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const passport = require('passport');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -15,8 +16,7 @@ app.use(session({
 	  resave: false,
 	  saveUninitialized: false
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);
