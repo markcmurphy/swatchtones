@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <script type="text/javascript" src="./js/app.js"></script>
+  <script type="text/javascript" src="./js/bundle.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/app.css">
   <title>swatchtones</title>
@@ -15,6 +16,10 @@
     <!-- testing, can be deleted -->
     <p>header</p>
   </header>
+
+<div id="response">
+
+</div>
 
   <div class="container">
     <main>
@@ -34,6 +39,7 @@
         <h4>{{swatch.product}} {{swatch._id}}</h4>
         <img src="{{swatch.imageLink}}" alt="">
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
+        <button ng-click="ctrl.getSwatchColor(swatch)" type="button" name="button">colors</button>
       </div>
     </main>
 
@@ -43,6 +49,12 @@
         <input type="text" ng-model="ctrl.formdata.productBrand" placeholder="brand"/>
         <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
+      </form>
+
+      <!-- testing node-vibrant -->
+      <form ng-submit="ctrl.getColors(src)">
+        <input type="text" name="src" value="src">
+        <button class="submit btn btn-primary" type="button" name="button">Submit path</button>
       </form>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>

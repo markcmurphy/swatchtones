@@ -1,12 +1,26 @@
 const app = angular.module('MyApp', []);
+
 console.log('app.js');
+
+// app.service('colors', function() {
+//     this.getColors = function (src) {
+//         let v = new Vibrant(src)
+//         v.getPalette().then((palette) => console.log(palette))
+//         };
+//     }
+// );
+
+// app.controller('colorController', function($scope, colors){
+//   this.palette = (src) => {
+//     colors.getColors(src);
+//     }
+// })
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
   this.products = {};
   this.swatches = {};
   this.formdata = {};
-
 
 // get swatches
   this.getSwatches = () => {
@@ -16,6 +30,18 @@ app.controller('mainController', ['$http', function($http) {
     }).then(response => {
       console.log('get swatches ran');
       this.swatches = response.data;
+
+    })
+    .catch(err => console.log(err));
+  }
+
+  this.getSwatchColor = (swatch) => {
+    $http({
+      method: 'GET',
+      url: '/swatches/' + swatch._id
+    }).then(response => {
+      // console.log('get swatches ran');
+      console.log(response.data);
     })
     .catch(err => console.log(err));
   }

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Products = require('../models/products.js')
 const Swatches = require('../models/swatches.js')
+const Vibrant = require('node-vibrant');
 
 // Index
 router.get('/', (req, res)=> {
@@ -11,12 +12,18 @@ router.get('/', (req, res)=> {
 });
 
 // Get swatch by ID
-router.get('/:id', (req, res)=>{
-    Swatches.findById(req.params.id, (err, foundSwatches)=>{
-      Products.findOne({'swatches._id':req.params.id}, (err, foundProduct)=>{
-        console.log(foundProduct);
-        res.json(foundSwatches);
-      })
+router.get('/:id', (req, res) => {
+  Swatches.findById(req.params.id, (err, foundSwatches) => {
+    Products.findOne({
+      'swatches._id': req.params.id
+    }, (err, foundProduct) => {
+      console.log(foundProduct);
+      let v = new Vibrant(foundSwatches.imageLink)
+      v.getPalette().then((palette) => res.json({
+        palette: palette,
+        foundSwatches: foundSwatches
+      }))
+    })
   });
 });
 
