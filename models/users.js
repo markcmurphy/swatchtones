@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Swatch = require('./swatches.js');
 
 const userSchema = mongoose.Schema({
-  userName: String,
+  email: String,
+  username: String,
   password: String,
   skinTone: String,
-  favorites: [],
-  swatches: [Swatch.schema]
+  favorites: []
 })
 
-const Users = mongoose.model('User, userSchema');
+const Users = mongoose.model('User', userSchema);
 
 module.exports = Users;

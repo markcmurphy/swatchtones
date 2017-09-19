@@ -2,16 +2,33 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
+app.use(cookieParser());
+app.use(session({
+	  secret: "totaleclipse",
+	  resave: false,
+	  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);
 
 const swatchesController = require('./controllers/swatches.js');
 app.use('/swatches', swatchesController);
+
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
+
+const usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 mongoose.connect('mongodb://localhost:27017/swatches');
 mongoose.connection.once('open', ()=> {

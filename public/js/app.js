@@ -138,3 +138,41 @@ this.getProducts();
 
 //  end of mainController
 }]);
+
+app.controller('LoginModalCtrl', function ($scope, $http) {
+  const controller = this;
+  this.foundUser = {};
+  this.user = {};
+  this.cancel = $scope.$dismiss;
+
+  this.create = function(){
+    $http({
+      method: 'POST',
+      url: '/sessions/register',
+      data: {
+        email: this.email,
+        password: this.password
+      }
+    }
+    )
+},
+  this.login = function(){
+    $http({
+      method: 'POST',
+      url: '/sessions/login',
+      data: {
+        email: this.email,
+        password: this.password
+      }}).then(
+          function(response) {
+            // console.log(response.data);
+            controller.user = response.data;
+            // console.log(controller.user);
+
+          },
+        function(err) {
+          console.log(err);
+        }
+      );
+}
+});

@@ -55,14 +55,43 @@
       <h4 ng-click="toggle_form1 = !toggle_form1">New Swatch</h4>
         <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
           <select
-          ng-model="ctrl.formdata.productId"
-          ng-options="product._id as product.productName for product in ctrl.products">
-  </select>
+            ng-model="ctrl.formdata.productId"
+            ng-options="product._id as product.productName for product in ctrl.products">
+          </select>
         <!-- <input type="text" ng-model="ctrl.product" placeholder="product"/> -->
         <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image"/>
         <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
       </form>
+
+      <!--user login  -->
+        <section ng-controller="LoginModalCtrl as auth">
+          <h1>Welcome {{auth.user._id}}</h1>
+          <div class="well">
+            <p><a href="/users/{{auth.user._id}}">{{auth.user.email}}</a></p>
+          </div>
+
+          <div>
+            <form ng-submit="auth.login();">
+              <input type="email" ng-model="auth.email" placeholder="email">
+              <input type="password" ng-model="auth.password" placeholder="password">
+              <input type="submit" name="" class="btn btn-primary" value="login">
+              <!-- <button ng-click="LoginModalCtrl.cancel()">Cancel</button> -->
+            </form>
+          </div>
+
+          <div>
+            <form ng-submit="auth.create();">
+              <input type="email" ng-model="auth.email" placeholder="email">
+              <input type="password" ng-model="auth.password" placeholder="password">
+              <input type="submit" name="" class="btn btn-primary" value="create">
+            </form>
+          </div>
+          <!-- end user login -->
+
+          <!-- end of testing auth -->
+        </section>
+
     </aside>
 
     <!-- end of "container" -->
