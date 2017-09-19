@@ -18,11 +18,7 @@ router.get('/:id', (req, res) => {
       'swatches._id': req.params.id
     }, (err, foundProduct) => {
       console.log(foundProduct);
-      let v = new Vibrant(foundSwatches.imageLink)
-      v.getPalette().then((palette) => res.json({
-        palette: palette,
-        foundSwatches: foundSwatches
-      }))
+      res.json(foundSwatches);
     })
   });
 });
@@ -30,9 +26,17 @@ router.get('/:id', (req, res) => {
 //Create Swatch
 router.post('/', (req, res) => {
   Products.findById(req.body.productId, (err, foundProducts) => {
-    console.log(req.body.productId);
-    console.log(foundProducts);
     Swatches.create(req.body, (err, createdSwatch) => {
+
+      let v = new Vibrant(createdSwatch.imageLink)
+      v.getPalette()
+      .then((palette) => {
+      console.log(palette);
+      createdSwatch.colors.push(palette);
+      createdSwatch.save((err, data) => {
+
+      });
+    })
         res.json(createdSwatch);
         foundProducts.swatches.push(createdSwatch);
         foundProducts.save((err, data) => {
