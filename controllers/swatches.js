@@ -31,8 +31,8 @@ router.post('/', (req, res) => {
       let v = new Vibrant(createdSwatch.imageLink)
       v.getPalette()
       .then((palette) => {
-      console.log(palette);
-      createdSwatch.colors.push(palette);
+        console.log(palette.Vibrant._rgb);
+      createdSwatch.colors.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
       createdSwatch.save((err, data) => {
 
       });
