@@ -43,8 +43,6 @@
         <input type="text" ng-model="ctrl.formdata.productBrand" placeholder="brand"/>
         <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
-        {{ctrl.formdata}}
-        <!-- <input  type="button" name="reset" value="reset" ng-click="form.reset()"> -->
       </form>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>
@@ -57,12 +55,12 @@
       <h4 ng-click="toggle_form1 = !toggle_form1">New Swatch</h4>
         <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
           <select
-          ng-model="ctrl.productId"
+          ng-model="ctrl.formdata.productId"
           ng-options="product._id as product.productName for product in ctrl.products">
   </select>
         <!-- <input type="text" ng-model="ctrl.product" placeholder="product"/> -->
-        <input type="text" ng-model="ctrl.imageLink" placeholder="image"/>
-        <input type="text" ng-model="ctrl.skinTone" placeholder="skin tone"/>
+        <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image"/>
+        <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
       </form>
     </aside>

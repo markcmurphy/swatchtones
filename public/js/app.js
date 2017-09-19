@@ -120,13 +120,14 @@ app.controller('mainController', ['$http', function($http) {
       data: {
         Id: this._id,
         product: this.product,
-        imageLink: this.imageLink,
+        imageLink: this.formdata.imageLink,
         productColor: this.productColor,
-        skinTone: this.skinTone,
-        productId: this.productId
+        skinTone: this.formdata.skinTone,
+        productId: this.formdata.productId
       }
     }).then(response => {
       console.log(response.data);
+      controller.formdata = {};
       this.getSwatches();
     })
     .catch(err => console.log(err));
