@@ -39,17 +39,8 @@
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
 
         <div class="color-block">
-          <button ng-click="ctrl.getSwatchColor(swatch)" type="button" name="button">colors</button>
-          <!-- <script type="text/javascript">
-          mycolor = d3.rgb(swatch.colors[0].Vibrant._rgb);
-
-          d3.select(".color-block").style("background-color", mycolor)
-          </script> -->
-          <div ng-repeat="rgb in ctrl.rgb">
-            <input type="button" value="set background" ng-click="myStyle={'background-color': '{{rgb.rgb}}'}">
-            <span ng-style="myStyle">Sample Text</span>
-          </div>
-
+            <input type="button" value="set background" ng-click="myStyle={'background-color': swatch.colors[0]}">
+            <span ng-style="myStyle">{{swatch.colors[0]}}</span>
         </div>
 
         </div>

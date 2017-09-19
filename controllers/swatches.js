@@ -27,14 +27,11 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Products.findById(req.body.productId, (err, foundProducts) => {
     Swatches.create(req.body, (err, createdSwatch) => {
-
       let v = new Vibrant(createdSwatch.imageLink)
       v.getPalette()
       .then((palette) => {
-        console.log(palette.Vibrant._rgb);
       createdSwatch.colors.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
       createdSwatch.save((err, data) => {
-
       });
     })
         res.json(createdSwatch);
