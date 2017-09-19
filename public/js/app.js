@@ -1,6 +1,5 @@
 const app = angular.module('MyApp', []);
 
-console.log('app.js');
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
@@ -8,6 +7,7 @@ app.controller('mainController', ['$http', function($http) {
   this.swatches = {};
   this.formdata = {};
   this.colors = {};
+
 
 // get swatches
   this.getSwatches = () => {
@@ -27,7 +27,7 @@ app.controller('mainController', ['$http', function($http) {
       method: 'GET',
       url: '/swatches/' + swatch._id
     }).then(response => {
-      this.colors = response.data.palette;
+      console.log(response);
     })
     .catch(err => console.log(err));
   }
