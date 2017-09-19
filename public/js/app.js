@@ -165,14 +165,26 @@ app.controller('LoginModalCtrl', function ($scope, $http) {
         password: this.password
       }}).then(
           function(response) {
-            // console.log(response.data);
-            controller.user = response.data;
-            // console.log(controller.user);
-
+            controller.user = response.data.foundUser;
+            localStorage.setItem('token', JSON.stringify(response.data.token));
           },
         function(err) {
           console.log(err);
         }
       );
+},
+this.getUsers = function() {
+  $http({
+    url: '/sessions/users',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+    }
+  }).then(function(response) {
+    console.log(response);
+    this.error = "Unauthorized";
+  }.bind(this));
 }
+
+// end of LoginModalCtrl
 });

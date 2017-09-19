@@ -17,7 +17,6 @@ app.use(session({
 	  saveUninitialized: false
 }));
 
-
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);
 

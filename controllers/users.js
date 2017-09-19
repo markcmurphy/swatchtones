@@ -19,7 +19,6 @@ router.get('/retrieve', function(req, res){ //any route will work
 	}
 });
 
-//...farther down the page
 router.post('/', function(req, res){
   console.log('router.post for users works');
     User.create(req.body, function(err, createdUser){
