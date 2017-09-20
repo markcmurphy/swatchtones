@@ -29,7 +29,11 @@ app.use('/sessions', sessionsController);
 const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
-mongoose.connect('mongodb://localhost:27017/swatches');
+// mongoose.connect('mongodb://localhost:27017/swatches');
+
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/makeuplooks';
+mongoose.connect(mongoUri);
+
 mongoose.connection.once('open', ()=> {
   console.log('connected to mongoose..');
 });
