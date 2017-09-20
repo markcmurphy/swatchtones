@@ -39,8 +39,12 @@
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
 
         <div class="color-block">
-            <input type="button" value="set background" ng-click="myStyle={'background-color': swatch.colors.vibrant[0]}">
-            <span ng-style="myStyle">{{swatch.colors.vibrant[0]}}</span>
+            <div ng-style="{'background-color': swatch.colors.vibrant[0]}">{{swatch.colors.vibrant[0]}}</div>
+            <div ng-style="{'background-color': swatch.colors.lightVibrant[0]}">{{swatch.colors.lightVibrant[0]}}</div>
+            <div ng-style="{'background-color': swatch.colors.darkVibrant[0]}">{{swatch.colors.darkVibrant[0]}}</div>
+            <div ng-style="{'background-color': swatch.colors.muted[0]}">{{swatch.colors.muted[0]}}</div>
+            <div ng-style="{'background-color': swatch.colors.lightMuted[0]}">{{swatch.colors.lightMuted[0]}}</div>
+            <div ng-style="{'background-color': swatch.colors.darkMuted[0]}">{{swatch.colors.darkMuted[0]}}</div>
         </div>
 
         </div>

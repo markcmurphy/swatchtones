@@ -28,9 +28,7 @@ app.controller('mainController', ['$http', function($http) {
       method: 'GET',
       url: '/swatches/' + swatch._id
     }).then(response => {
-      this.values = response.data.colors[0];
-      this.rgb = 'rgb(' + this.values.DarkMuted._rgb.join(', ') + ')';
-
+      res.json(response);
     })
     .catch(err => console.log(err));
   }

@@ -30,8 +30,16 @@ router.post('/', (req, res) => {
       let v = new Vibrant(createdSwatch.imageLink)
       v.getPalette()
       .then((palette) => {
-      console.log(palette);
+        console.log(palette);
+      console.log('LightVibrant' + palette.LightVibrant._rgb);
+      console.log('Muted' + palette.Muted._rgb);
       createdSwatch.colors.vibrant.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.lightVibrant.push('rgb(' + palette.LightVibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.darkVibrant.push('rgb(' + palette.DarkVibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.muted.push('rgb(' + palette.Muted._rgb.join(', ') + ')');
+      createdSwatch.colors.lightMuted.push('rgb(' + palette.LightMuted._rgb.join(', ') + ')');
+      createdSwatch.colors.darkMuted.push('rgb(' + palette.DarkMuted._rgb.join(', ') + ')');
+      console.log(createdSwatch.colors);
       createdSwatch.save((err, data) => {
       });
     })
