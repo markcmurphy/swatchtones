@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -35,10 +36,10 @@ app.use('/users', usersController);
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/makeuplooks';
 mongoose.connect(mongoUri);
 
-mongoose.connection.once('open', ()=> {
-  console.log('connected to mongoose..');
-});
+mongoose.connection.once('open', () => {
+  console.log('connected to Mongo')
+})
 
-app.listen(process.env.PORT || 3000), ()=> {
-  console.log('listening on port 3000');
-});
+app.listen(PORT, () => {
+  console.log('listening..')
+})
