@@ -1,11 +1,13 @@
 const app = angular.module('MyApp', []);
-console.log('app.js');
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
   this.products = {};
   this.swatches = {};
   this.formdata = {};
+  this.colors = {};
+  this.values = {};
+  this.rgb = {};
 
 
 // get swatches
@@ -16,6 +18,17 @@ app.controller('mainController', ['$http', function($http) {
     }).then(response => {
       console.log('get swatches ran');
       this.swatches = response.data;
+
+    })
+    .catch(err => console.log(err));
+  }
+
+  this.getSwatchColor = (swatch) => {
+    $http({
+      method: 'GET',
+      url: '/swatches/' + swatch._id
+    }).then(response => {
+      res.json(response);
     })
     .catch(err => console.log(err));
   }

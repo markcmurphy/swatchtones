@@ -6,8 +6,16 @@ const Swatch = require('./swatches.js');
 const swatchSchema = mongoose.Schema({
   imageLink: String,
   productColor: String,
-  skinTone: String
-})
+  skinTone: String,
+  colors: {
+    vibrant: [],
+    lightVibrant: [],
+    darkVibrant: [],
+    muted: [],
+    lightMuted: [],
+    darkMuted: []
+  }
+});
 
 const Swatches = mongoose.model('Swatch', swatchSchema);
 
