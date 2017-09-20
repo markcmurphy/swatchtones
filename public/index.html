@@ -35,7 +35,7 @@
 
       <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
         <h4>{{swatch.product}} {{swatch._id}}</h4>
-        <img src="{{swatch.imageLink}}" alt="">
+        <a href="{{swatch.imageLink}}" target="_blank"><img src="{{swatch.imageLink}}" alt=""></a>
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
 
         <div class="color-block">
@@ -48,7 +48,6 @@
         </div>
 
         </div>
-      </div>
     </main>
 
     <nav>
@@ -57,12 +56,6 @@
         <input type="text" ng-model="ctrl.formdata.productBrand" placeholder="brand"/>
         <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
         <button class="submit btn btn-primary" type="submit" /> Submit </button>
-      </form>
-
-      <!-- testing node-vibrant -->
-      <form ng-submit="ctrl.getColors(src)">
-        <input type="text" name="src" value="src">
-        <button class="submit btn btn-primary" type="button" name="button">Submit path</button>
       </form>
 
       <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>
@@ -87,7 +80,7 @@
       <!--user login  -->
         <section ng-controller="LoginModalCtrl as auth">
           <div class="well">
-            <p><a href="/users/{{auth.user._id}}">{{auth.user.email}}</a></p>
+            <p><a href="/users/{{auth.user._id}}">{{auth.user}}</a></p>
           </div>
 
           <div>
@@ -114,6 +107,7 @@
 
     <!-- end of "container" -->
   </div>
+</div>
 
 </body>
 </html>
