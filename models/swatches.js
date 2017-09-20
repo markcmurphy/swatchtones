@@ -7,8 +7,15 @@ const swatchSchema = mongoose.Schema({
   imageLink: String,
   productColor: String,
   skinTone: String,
-  colors: []
-})
+  colors: {
+    vibrant: [],
+    lightVibrant: [],
+    darkVibrant: [],
+    muted: [],
+    lightMuted: [],
+    darkMuted: []
+  }
+});
 
 const Swatches = mongoose.model('Swatch', swatchSchema);
 
