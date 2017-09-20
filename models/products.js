@@ -2,14 +2,16 @@ const mongoose = require('mongoose');
 const Swatch = require('./swatches.js');
 
 const productSchema = mongoose.Schema({
-  productBrand: String,
-  productName: String,
+  brand: String,
+  name: String,
   price: Number,
-  imageLink: String,
-  productLink: String,
+  image_link: String,
+  product_link: String,
   description: String,
-  productType: String,
-  productColor: String,
+  product_type: String,
+  rating: Number,
+  product_colors: [],
+  tag_list: [],
   swatches: [Swatch.schema]
 })
 
