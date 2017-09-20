@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -40,6 +39,6 @@ mongoose.connection.once('open', ()=> {
   console.log('connected to mongoose..');
 });
 
-app.listen(PORT, ()=> {
+app.listen(process.env.PORT || 3000), ()=> {
   console.log('listening on port 3000');
 });
