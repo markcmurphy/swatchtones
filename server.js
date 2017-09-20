@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
+
 const Vibrant = require('node-vibrant');
 require('dotenv').config();
 

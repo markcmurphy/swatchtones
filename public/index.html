@@ -4,8 +4,10 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
-  </script>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
+  </script> -->
+  <script type="text/javascript" src="./js/angular-filter.min.js"> -->
+  <!-- </script>
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/bundle.js"></script>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -23,9 +25,12 @@
     <main>
 
       <input type="text" ng-model="search" placeholder="search by title" />
-<li ng-repeat="product in ctrl.products | fuzzyBy: 'name': search">
-  {{ product.name }}
-</li>
+      <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
+        <li>
+          <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
+        </li>
+
+      </ul>
 
       <!-- <div class="product" ng-repeat="product in ctrl.products">
         <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
