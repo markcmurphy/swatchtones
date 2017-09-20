@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
+  </script>
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/bundle.js"></script>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -19,7 +21,13 @@
 
   <div class="container">
     <main>
-      <div class="product" ng-repeat="product in ctrl.products">
+
+      <input type="text" ng-model="search" placeholder="search by title" />
+<li ng-repeat="product in ctrl.products | fuzzyBy: 'name': search">
+  {{ product.name }}
+</li>
+
+      <!-- <div class="product" ng-repeat="product in ctrl.products">
         <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
         <img src="{{product.image_link}}" alt="">
         <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
@@ -30,7 +38,7 @@
             <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
             <input type="submit" ng-click="ctrl.editformshow=false">
           </form>
-      </div>
+      </div> -->
 
 
 
@@ -54,8 +62,8 @@
     <nav>
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
         <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
-        <input type="text" ng-model="ctrl.formdata.productBrand" placeholder="brand"/>
-        <input type="text" ng-model="ctrl.formdata.productName" placeholder="name"/>
+        <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand"/>
+        <input type="text" ng-model="ctrl.formdata.name" placeholder="name"/>
         <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
       </form>
 
@@ -70,7 +78,7 @@
         <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
           <select
             ng-model="ctrl.formdata.productId"
-            ng-options="product._id as product.productName for product in ctrl.products">
+            ng-options="product._id as product.name for product in ctrl.products">
           </select>
         <!-- <input type="text" ng-model="ctrl.product" placeholder="product"/> -->
         <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image"/>
