@@ -1,4 +1,16 @@
-const app = angular.module('MyApp', ['angular.filter']);
+const app = angular.module('MyApp', ['angular.filter','angularFileUpload']);
+
+app.controller('AppController', function($scope, FileUploader) {
+        $scope.uploader = new FileUploader({
+          url: 'https://api.imgur.com/3/image',
+          alias: 'image',
+          headers: {'Authorization': 'Client-ID dbae59ffd91b31d'},
+          autoUpload: true
+        }),
+        $scope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
+            console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+      });
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
@@ -8,7 +20,6 @@ app.controller('mainController', ['$http', function($http) {
   this.colors = {};
   this.values = {};
   this.rgb = {};
-
 
 // get swatches
   this.getSwatches = () => {

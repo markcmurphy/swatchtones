@@ -6,11 +6,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
   </script> -->
-  <script type="text/javascript" src="./js/angular-filter.min.js"> -->
-  <!-- </script>
+  <script type="text/javascript" src="./js/angular-filter.min.js"></script>
+  <script src="./js/angular-file-upload.js"></script>
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/bundle.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/app.css">
   <title>swatchtones</title>
@@ -65,6 +64,17 @@
     </main>
 
     <nav>
+
+    <div ng-controller="AppController">
+        <input type="file" nv-file-select="" uploader="uploader"/><br/>
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                Name: <span ng-bind="item.file.name"></span><br/>
+                <button ng-click="item.upload()">upload</button>
+            </li>
+        </ul>
+    </div>
+
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
         <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
         <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand"/>
