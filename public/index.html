@@ -65,15 +65,15 @@
 
     <nav>
 
-    <div ng-controller="AppController">
-        <input type="file" nv-file-select="" uploader="uploader"/><br/>
-        <ul>
-            <li ng-repeat="item in uploader.queue">
-                Name: <span ng-bind="item.file.name"></span><br/>
-                <button ng-click="item.upload()">upload</button>
-            </li>
-        </ul>
-    </div>
+      <div ng-controller="AppController">
+          <input type="file" nv-file-select="" uploader="uploader"/><br/>
+          <ul>
+              <li ng-repeat="item in uploader.queue">
+                  Name: <span ng-bind="item.file.name"></span><br/>
+                  <button ng-click="item.upload()">upload</button>
+              </li>
+          </ul>
+      </div>
 
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
         <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
@@ -95,7 +95,6 @@
             ng-model="ctrl.formdata.productId"
             ng-options="product._id as product.name for product in ctrl.products">
           </select>
-        <!-- <input type="text" ng-model="ctrl.product" placeholder="product"/> -->
         <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image"/>
         <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone"/>
         <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
