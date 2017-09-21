@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/markcmurphy/swatchtones#readme",
   "dependencies": {
+    "angular-filter": "^0.5.16",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "browserify": "^14.4.0",

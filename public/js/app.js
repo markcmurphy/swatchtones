@@ -1,4 +1,4 @@
-const app = angular.module('MyApp', []);
+const app = angular.module('MyApp', ['angular.filter']);
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
@@ -114,8 +114,8 @@ app.controller('mainController', ['$http', function($http) {
       url: '/products',
       data: {
         Id: this._id,
-        productName: this.formdata.productName,
-        productBrand: this.formdata.productBrand
+        name: this.formdata.name,
+        brand: this.formdata.brand
       }
     }).then(response => {
       console.log(response.data);
