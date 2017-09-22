@@ -3,8 +3,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
+// const cookieParser = require('cookie-parser');
+// const session = require('express-session');
 const jwt = require('jsonwebtoken');
 
 const Vibrant = require('node-vibrant');
@@ -13,12 +13,12 @@ require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
-app.use(cookieParser());
-app.use(session({
-	  secret: "totaleclipse",
-	  resave: false,
-	  saveUninitialized: false
-}));
+// app.use(cookieParser());
+// app.use(session({
+// 	  secret: "totaleclipse",
+// 	  resave: false,
+// 	  saveUninitialized: false
+// }));
 
 const productsController = require('./controllers/products.js');
 app.use('/products', productsController);

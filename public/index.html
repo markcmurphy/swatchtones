@@ -103,8 +103,10 @@
       <!--user login  -->
         <section ng-controller="LoginModalCtrl as auth">
           <div class="well">
-            <p><a href="/users/{{auth.user._id}}">{{auth.user}}</a></p>
+            {{auth.user}}
           </div>
+
+<button ng-click="auth.getUsers()" type="button" name="button">test</button>
 
           <div>
             <form ng-submit="auth.login();">
