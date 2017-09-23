@@ -96,17 +96,6 @@ app.controller('mainController', ['$http', function($http) {
   );
 },
 
-  // this.searchForm = () => {
-  //   $http({
-  //     method: 'POST',
-  //     url: 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=' + this.formdata.brand
-  //   }).then(response => {
-  //     console.log('search');
-  //     console.log(response.data);
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-
 // form submit for products
   this.processForm = function() {
     $http({
@@ -169,6 +158,7 @@ app.controller('LoginModalCtrl', function ($scope, $http) {
     }
     )
 },
+
   this.login = function(){
     $http({
       method: 'POST',
@@ -186,6 +176,7 @@ app.controller('LoginModalCtrl', function ($scope, $http) {
         }
       );
 },
+
 this.getUsers = function() {
   $http({
     url: '/sessions/users',
