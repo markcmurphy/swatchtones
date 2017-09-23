@@ -1,4 +1,16 @@
-const app = angular.module('MyApp', ['angular.filter']);
+const app = angular.module('MyApp', ['angular.filter','angularFileUpload']);
+
+app.controller('AppController', function($scope, FileUploader) {
+        $scope.uploader = new FileUploader({
+          url: 'https://api.imgur.com/3/image',
+          alias: 'image',
+          headers: {'Authorization': 'Client-ID dbae59ffd91b31d'},
+          autoUpload: true
+        }),
+        $scope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
+            console.info('onSuccessItem', fileItem, response, status, headers);
+        };
+      });
 
 app.controller('mainController', ['$http', function($http) {
   const controller = this;
@@ -8,7 +20,6 @@ app.controller('mainController', ['$http', function($http) {
   this.colors = {};
   this.values = {};
   this.rgb = {};
-
 
 // get swatches
   this.getSwatches = () => {
@@ -96,17 +107,6 @@ app.controller('mainController', ['$http', function($http) {
   );
 },
 
-  // this.searchForm = () => {
-  //   $http({
-  //     method: 'POST',
-  //     url: 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=' + this.formdata.brand
-  //   }).then(response => {
-  //     console.log('search');
-  //     console.log(response.data);
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-
 // form submit for products
   this.processForm = function() {
     $http({
@@ -175,6 +175,7 @@ app.controller('LoginModalCtrl', function ($http) {
     }
     )
 },
+
   this.login = function(){
     $http({
       method: 'POST',
