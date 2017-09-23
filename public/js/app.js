@@ -152,11 +152,17 @@ this.getProducts();
 //  end of mainController
 }]);
 
-app.controller('LoginModalCtrl', function ($scope, $http) {
+app.controller('LoginModalCtrl', function ($http) {
   const controller = this;
-  this.foundUser = {};
-  this.user = {};
-  this.cancel = $scope.$dismiss;
+  this.user = [];
+
+  this.loginRequired = function(req, res, next) {
+    if (req.user) {
+      next();
+    } else {
+      return res.status(401).json({ message: 'Unauthorized user!' });
+    }
+  };
 
   this.create = function(){
     $http({
@@ -178,7 +184,9 @@ app.controller('LoginModalCtrl', function ($scope, $http) {
         password: this.password
       }}).then(
           function(response) {
-            controller.user = response.data.foundUser;
+            // console.log(response.data.foundUser.email);
+            this.user = response.data.foundUser;
+            console.log(this.user);
             localStorage.setItem('token', JSON.stringify(response.data.token));
           },
         function(err) {
@@ -186,15 +194,16 @@ app.controller('LoginModalCtrl', function ($scope, $http) {
         }
       );
 },
+
 this.getUsers = function() {
   $http({
-    url: '/sessions/users',
     method: 'GET',
+    url: '/users',
     headers: {
-      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      token: JSON.parse(localStorage.getItem('token'))
     }
   }).then(function(response) {
-    console.log(response);
+    console.log("worked");
     this.error = "Unauthorized";
   }.bind(this));
 }

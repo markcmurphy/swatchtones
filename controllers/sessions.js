@@ -5,6 +5,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/users.js');
 require('dotenv').config();
 
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now())
+  next()
+})
+
+
+
 
 router.get('/destroy-route', function(){ //any route will work
 	req.session.destroy(function(err){
@@ -25,67 +32,61 @@ router.post('/register', (req, res, next) => {
 
   User.create(userDbEntry, (err, user) => {
     console.log(user);
-    req.session.message  = '';
-    req.session.email = user.email;
-    req.session.logged = true;
+    // req.session.message  = '';
+    // req.session.email = user.email;
+    // req.session.logged = true;
 		res.json(user);
   });
 });
 
 router.post('/login', (req, res, next) => {
   User.findOne({email: req.body.email}, (err, foundUser) => {
-		console.log(foundUser);
+		// console.log(foundUser);
+    // console.log(req.body.email);
       if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
-					req.session.email = req.body.email;
-					req.session.currentuser = foundUser;
-					req.session.logged = true;
-					console.log(req.session);
+              console.log(foundUser);
+              // console.log(req.session);
+              // console.log(req.user);
+					foundUser.email = req.body.email;
+
+					// req.session.currentuser = foundUser;
+					// req.session.logged = true;
+					// console.log(req.session);
 
 					var token = jwt.sign({data:foundUser}, process.env.JWT_SECRET, {
-          expiresIn: 14400
+          expiresIn: Math.floor(new Date().getTime()/1000) + 7*24*60*60
         });
-				console.log("token:" + token);
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token,
-					foundUser: foundUser
-					});
+				// console.log("token:" + token);
+        // res.json({
+        //   success: true,
+        //   message: 'Enjoy your token!',
+        //   token: token,
+				// 	foundUser: foundUser
+				// 	});
 
         	// res.json(foundUser);
-            } else {
-              console.log('else in bcrypt compare');
-              req.session.message = 'email or password are incorrect';
-              res.redirect('/sessions/login')
             }
-      } else {
-          req.session.message = 'email or password are incorrect';
-          res.redirect('/sessions/login')
-
+            // else {
+            //   console.log('else in bcrypt compare');
+            //   req.session.message = 'email or password are incorrect';
+            //   res.redirect('/sessions/login')
+            // }
       }
+      // else {
+      //     req.session.message = 'email or password are incorrect';
+      //     res.redirect('/sessions/login')
+      //
+      // }
   });
 })
 
-router.use(function(req, res, next) {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
-      if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
-      } else {
-        req.decoded = decoded;
-        next();
-      }
-    });
+router.loginRequired = function(req, res, next) {
+  if (req.user) {
+    next();
   } else {
-    return res.status(403).send({
-        success: false,
-        message: 'No token provided.'
-    });
-
+    return res.status(401).json({ message: 'Unauthorized user!' });
   }
-});
-
+};
 
 module.exports = router;
