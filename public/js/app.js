@@ -156,7 +156,7 @@ app.controller('mainController', ['$http', function($http) {
 
 app.controller('LoginModalCtrl', function($http) {
   const controller = this;
-  this.user = [];
+  this.user = {};
 
   this.loginRequired = function(req, res, next) {
     if (req.user) {
@@ -179,7 +179,7 @@ app.controller('LoginModalCtrl', function($http) {
       })
     },
 
-    this.login = function() {
+  this.login = function() {
       $http({
         method: 'POST',
         url: '/sessions/login',
@@ -189,15 +189,10 @@ app.controller('LoginModalCtrl', function($http) {
         }
       }).then(
         function(response) {
-          // console.log(response.data.foundUser.email);
+          console.log(response.data.foundUser);
           this.user = response.data.foundUser;
-          console.log(this.user);
           localStorage.setItem('token', JSON.stringify(response.data.token));
-        },
-        function(err) {
-          console.log(err);
-        }
-      );
+        }.bind(this))
     },
 
     this.logout = function() {
@@ -207,16 +202,17 @@ app.controller('LoginModalCtrl', function($http) {
 
     this.getUsers = function() {
       $http({
-        method: 'GET',
+        method: 'POST',
         url: '/users',
         headers: {
           token: JSON.parse(localStorage.getItem('token'))
         }
       }).then(function(response) {
-        console.log("worked");
+        this.user = response.data;
         this.error = "Unauthorized";
       }.bind(this));
     }
 
+this.getUsers();
   // end of LoginModalCtrl
 });

@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
-  </script> -->
-  <script type="text/javascript" src="./js/angular-filter.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+  <!-- <script type="text/javascript" src="./js/angular-filter.min.js"></script> -->
   <script src="./js/angular-file-upload.js"></script>
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/bundle.js"></script>
@@ -17,7 +19,7 @@
 
 <body ng-controller="mainController as ctrl">
   <header>
-    <p>header</p>
+    <p>SwatchTones</p>
   </header>
 
   <div class="container">
@@ -28,7 +30,6 @@
         <li>
           <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
         </li>
-
       </ul>
 
       <!-- <div class="product" ng-repeat="product in ctrl.products">
@@ -82,10 +83,6 @@
         <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
       </form>
 
-      <!-- <h4 ng-click="toggle_form = !toggle_form">Search</h4>
-        <form ng-show="toggle_form" ng-submit="ctrl.searchForm()">
-        <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand"/>
-        <button class="submit btn btn-primary" type="submit" /> Submit </button> -->
     </nav>
 
     <aside>
@@ -101,7 +98,7 @@
       <!--user login  -->
       <section ng-controller="LoginModalCtrl as auth">
         <div class="well">
-          {{auth.user}}
+          {{auth.user.email}}
         </div>
 
         <button ng-click="auth.getUsers()" type="button" name="button">test</button>
