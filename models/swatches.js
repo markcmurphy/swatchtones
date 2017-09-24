@@ -9,12 +9,12 @@ const swatchSchema = mongoose.Schema({
   skinTone: String,
   colors: {
     vibrant: {rgb: [], isSkin: Boolean},
-    lightVibrant: [],
-    darkVibrant: [],
-    muted: [],
-    lightMuted: [],
-    darkMuted: []
-  }
+    lightVibrant: {rgb: [], isSkin: Boolean},
+    darkVibrant: {rgb: [], isSkin: Boolean},
+    muted: {rgb: [], isSkin: Boolean},
+    lightMuted: {rgb: [], isSkin: Boolean},
+    darkMuted: {rgb: [], isSkin: Boolean}
+    }
 });
 
 const Swatches = mongoose.model('Swatch', swatchSchema);
