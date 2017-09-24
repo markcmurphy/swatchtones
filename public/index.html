@@ -57,12 +57,19 @@
           <p ng-if="swatch.colors.vibrant.isSkin == true">{{swatch.colors.vibrant.rgb}}</p>
 
         <div class="color-block">
-          <div ng-style="{'background-color': swatch.colors.vibrant[0]}">Vibrant: {{swatch.colors.vibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.lightVibrant[0]}">LightVibrant: {{swatch.colors.lightVibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.darkVibrant[0]}">darkVibrant: {{swatch.colors.darkVibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.muted[0]}">muted: {{swatch.colors.muted[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.lightMuted[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.darkMuted[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.vibrant.rgb[0]}">Vibrant: {{swatch.colors.vibrant[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.lightVibrant.rgb[0]}">LightVibrant: {{swatch.colors.lightVibrant[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.darkVibrant.rgb[0]}">darkVibrant: {{swatch.colors.darkVibrant[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.muted.rgb[0]}">muted: {{swatch.colors.muted[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.lightMuted.rgb[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
+
+          <div ng-style="{'background-color': swatch.colors.darkMuted.rgb[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
+
         </div>
 
       </div>
