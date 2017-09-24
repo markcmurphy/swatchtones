@@ -26,7 +26,6 @@ router.get('/:id', (req, res) => {
   });
 });
 
-console.log(isSkin(169, 42, 83));
 //Create Swatch
 router.post('/', (req, res) => {
   const skinvalue = {};

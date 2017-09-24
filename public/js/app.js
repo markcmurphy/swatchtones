@@ -143,11 +143,11 @@ app.controller('mainController', ['$http', function($http) {
       }).then(response => {
         console.log(response.data);
         controller.formdata = {};
+        this.getProducts();
         this.getSwatches();
       })
       .catch(err => console.log(err));
   }
-
   this.getSwatches();
   this.getProducts();
 
