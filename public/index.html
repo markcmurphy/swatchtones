@@ -25,12 +25,12 @@
   <div class="container">
     <main>
 
-      <input type="text" ng-model="search" placeholder="search by title" />
+      <!-- <input type="text" ng-model="search" placeholder="search by title" />
       <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
         <li>
           <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
         </li>
-      </ul>
+      </ul> -->
 
       <!-- <div class="product" ng-repeat="product in ctrl.products">
         <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
@@ -53,12 +53,12 @@
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
 
         <div class="color-block">
-          <div ng-style="{'background-color': swatch.colors.vibrant[0]}">{{swatch.colors.vibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.lightVibrant[0]}">{{swatch.colors.lightVibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.darkVibrant[0]}">{{swatch.colors.darkVibrant[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.muted[0]}">{{swatch.colors.muted[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.lightMuted[0]}">{{swatch.colors.lightMuted[0]}}</div>
-          <div ng-style="{'background-color': swatch.colors.darkMuted[0]}">{{swatch.colors.darkMuted[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.vibrant[0]}">Vibrant: {{swatch.colors.vibrant[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.lightVibrant[0]}">LightVibrant: {{swatch.colors.lightVibrant[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.darkVibrant[0]}">darkVibrant: {{swatch.colors.darkVibrant[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.muted[0]}">muted: {{swatch.colors.muted[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.lightMuted[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
+          <div ng-style="{'background-color': swatch.colors.darkMuted[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
         </div>
 
       </div>
