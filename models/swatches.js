@@ -8,13 +8,13 @@ const swatchSchema = mongoose.Schema({
   productColor: String,
   skinTone: String,
   colors: {
-    vibrant: [],
-    lightVibrant: [],
-    darkVibrant: [],
-    muted: [],
-    lightMuted: [],
-    darkMuted: []
-  }
+    vibrant: {rgb: [], isSkin: Boolean},
+    lightVibrant: {rgb: [], isSkin: Boolean},
+    darkVibrant: {rgb: [], isSkin: Boolean},
+    muted: {rgb: [], isSkin: Boolean},
+    lightMuted: {rgb: [], isSkin: Boolean},
+    darkMuted: {rgb: [], isSkin: Boolean}
+    }
 });
 
 const Swatches = mongoose.model('Swatch', swatchSchema);
