@@ -18,7 +18,7 @@
 
   <header>
     <!-- navbar -->
-    <nav class="navbar navbar-default">
+    <section class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -70,7 +70,7 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>
+    </section>
   </header>
 
 
@@ -118,7 +118,29 @@
 
 <div class="container">
 <main class="grid-container">
-
+<div class="grid">
+  <div class="grid-item grid-item-alpha">
+    <h2>Foundation</h2>
+  </div>
+  <div class="grid-item">
+    <h4>Concealer</h4>
+  </div>
+  <div class="grid-item">
+    <h4>Highlighter/<br>Bronzer/<br>Blush</h4>
+  </div>
+  <div class="grid-item">
+    Eye Shadow
+  </div>
+  <div class="grid-item">
+    Eye Liner
+  </div>
+  <div class="grid-item">
+    Mascara
+  </div>
+  <div class="grid-item">
+    Tools
+  </div>
+</div>
 <!-- search bar for products -->
       <!-- <input type="text" ng-model="search" placeholder="search by title" />
       <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
@@ -126,6 +148,8 @@
           <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
         </li>
       </ul> -->
+
+
 
 
 
@@ -163,7 +187,11 @@
       </div> -->
     </main>
 
-
+<nav>
+  <div class="grid-item">
+    Heyo
+  </div>
+</nav>
 
     <aside>
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
