@@ -12,6 +12,11 @@ body {
   border-radius: 5px;
 }
 
+.carousel img {
+  width: 100%;
+  overflow: hidden;
+}
+
 /*header {
   text-align: center;
   font-size: 50px;
@@ -30,7 +35,7 @@ nav, aside {
   background-color: lightgrey;
 }
 
-.survivor {
+.swatch {
   margin: 5px;
   padding: 5px 15px 5px 15px;
   background-color: plum;
@@ -45,6 +50,18 @@ nav, aside {
   aside {
     flex: 0 0 12em;
   }
+
+ .carousel .carousel-inner img {
+   width: 100%;
+   height: 25em;
+   object-fit: cover;
+   overflow: hidden;
+ }
+
+ header {
+   margin-bottom: -20px;
+ }
+  /*end of @media*/
 }
 
 /*the following code is being used for testing and may be deleted*/
@@ -55,8 +72,4 @@ img {
 
 .product {
   background-color: DeepSkyBlue;
-}
-
-.swatch {
-  background-color: HoneyDew;
 }
