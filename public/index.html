@@ -84,8 +84,6 @@
   </ol>
 
   <!-- Wrapper for slides -->
-<div class="behind-carousel">
-
 <div class="carousel-inner">
   <div class="item active">
     <img src="https://i.imgur.com/JDwLLnl.jpg" alt="makeup">
@@ -105,7 +103,6 @@
 
     <!-- end of carousel-inner -->
   </div>
-</div>  <!-- end of .behind-carousel -->
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -120,8 +117,9 @@
 </section>
 
 <div class="container">
-<main>
+<main class="grid-container">
 
+<!-- search bar for products -->
       <!-- <input type="text" ng-model="search" placeholder="search by title" />
       <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
         <li>
@@ -129,22 +127,28 @@
         </li>
       </ul> -->
 
-      <!-- <div class="product" ng-repeat="product in ctrl.products">
+
+
+<!-- products -->
+    <!-- <div class="grid">
+      <div class="product grid-item" ng-repeat="product in ctrl.products">
         <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
         <img src="{{product.image_link}}" alt="">
-        <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
-        <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
 
+        <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
+
+        <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
           <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
             <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
             <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
             <input type="submit" ng-click="ctrl.editformshow=false">
           </form>
-      </div> -->
+      </div>
+    </div> -->
 
 
-
-      <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
+<!-- swatches -->
+      <!-- <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
         <h4>{{swatch.product}}</h4>
         <a href="{{swatch.imageLink}}" target="_blank"><img src="{{swatch.imageLink}}" alt=""></a>
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
@@ -156,7 +160,7 @@
           <div ng-if="swatch.colors.lightMuted.isSkin == false" ng-style="{'background-color': swatch.colors.lightMuted.rgb[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
           <div ng-if="swatch.colors.darkMuted.isSkin == false" ng-style="{'background-color': swatch.colors.darkMuted.rgb[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
         </div>
-      </div>
+      </div> -->
     </main>
 
 
@@ -193,7 +197,6 @@
           {{auth.user.email}}
         </div>
 
-        <button ng-click="auth.getUsers()" type="button" name="button">test</button>
         <button ng-click="auth.logout()" type="button" name="button">log out</button>
 
         <div>
