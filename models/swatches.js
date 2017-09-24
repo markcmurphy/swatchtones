@@ -8,7 +8,7 @@ const swatchSchema = mongoose.Schema({
   productColor: String,
   skinTone: String,
   colors: {
-    vibrant: [],
+    vibrant: {rgb: [], isSkin: Boolean},
     lightVibrant: [],
     darkVibrant: [],
     muted: [],
