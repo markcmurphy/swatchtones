@@ -3,6 +3,9 @@ const router = express.Router();
 const Products = require('../models/products.js')
 const Swatches = require('../models/swatches.js')
 const Vibrant = require('node-vibrant');
+const isSkin = require('skintone');
+const algorithmia = require("algorithmia");
+const client = algorithmia("simuAhpRuawq4VrJSo1bqsp+gMd1");
 
 // Index
 router.get('/', (req, res)=> {
@@ -25,18 +28,24 @@ router.get('/:id', (req, res) => {
 
 //Create Swatch
 router.post('/', (req, res) => {
+  const skinvalue = {};
   Products.findById(req.body.productId, (err, foundProducts) => {
     Swatches.create(req.body, (err, createdSwatch) => {
       let v = new Vibrant(createdSwatch.imageLink)
       v.getPalette()
       .then((palette) => {
-      createdSwatch.colors.vibrant.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
-      createdSwatch.colors.lightVibrant.push('rgb(' + palette.LightVibrant._rgb.join(', ') + ')');
-      createdSwatch.colors.darkVibrant.push('rgb(' + palette.DarkVibrant._rgb.join(', ') + ')');
-      createdSwatch.colors.muted.push('rgb(' + palette.Muted._rgb.join(', ') + ')');
-      createdSwatch.colors.lightMuted.push('rgb(' + palette.LightMuted._rgb.join(', ') + ')');
-      createdSwatch.colors.darkMuted.push('rgb(' + palette.DarkMuted._rgb.join(', ') + ')');
-      console.log(createdSwatch.colors);
+      createdSwatch.colors.vibrant.rgb.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.vibrant.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      createdSwatch.colors.lightVibrant.rgb.push('rgb(' + palette.LightVibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.lightVibrant.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      createdSwatch.colors.darkVibrant.rgb.push('rgb(' + palette.DarkVibrant._rgb.join(', ') + ')');
+      createdSwatch.colors.darkVibrant.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      createdSwatch.colors.muted.rgb.push('rgb(' + palette.Muted._rgb.join(', ') + ')');
+      createdSwatch.colors.muted.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      createdSwatch.colors.lightMuted.rgb.push('rgb(' + palette.LightMuted._rgb.join(', ') + ')');
+      createdSwatch.colors.lightMuted.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      createdSwatch.colors.darkMuted.rgb.push('rgb(' + palette.DarkMuted._rgb.join(', ') + ')');
+      createdSwatch.colors.darkMuted.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
       createdSwatch.save((err, data) => {
       });
     })
