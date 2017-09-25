@@ -4,27 +4,143 @@
 <head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js">
-  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-
-  <!-- <script type="text/javascript" src="./js/angular-filter.min.js"></script> -->
   <script src="./js/angular-file-upload.js"></script>
   <script type="text/javascript" src="./js/app.js"></script>
   <script type="text/javascript" src="./js/bundle.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/app.css">
-  <title>swatchtones</title>
+  <link rel="stylesheet" href="./css/navbar.css">
+  <title>SwatchTones</title>
 </head>
 
 <body ng-controller="mainController as ctrl">
+
   <header>
-    <p>SwatchTones</p>
+    <!-- navbar -->
+    <section class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SwatchTones</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </header>
 
-  <div class="container">
-    <main>
 
+<section>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+<div class="carousel-inner">
+  <div class="item active">
+    <img src="https://i.imgur.com/JDwLLnl.jpg" alt="makeup">
+    <div class="carousel-caption">
+      <h3>New York</h3>
+      <p>We love the Big Apple!</p>
+    </div>
+  </div>
+
+    <div class="item">
+      <img src="chicago.jpg" alt="Chicago">
+    </div>
+
+    <div class="item">
+      <img src="ny.jpg" alt="New York">
+    </div>
+
+    <!-- end of carousel-inner -->
+  </div>
+
+  <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</section>
+
+<div class="container">
+<main class="grid-container">
+<div class="grid">
+  <div class="grid-item grid-item-alpha">
+    <h3>Foundation</h3>
+  </div>
+  <div class="grid-item">
+    <h3>Concealer</h3>
+  </div>
+  <div class="grid-item">
+    <h4>Highlighter/<br>Bronzer/<br>Blush</h4>
+  </div>
+  <div class="grid-item">
+    <h3>Eye Shadow</h3>
+  </div>
+  <div class="grid-item">
+    <h3>Eye Liner</h3>
+  </div>
+  <div class="grid-item">
+    <h3>Mascara</h3>
+  </div>
+  <div class="grid-item">
+    <h3>Tools</h3>
+  </div>
+</div>
+<!-- search bar for products -->
       <!-- <input type="text" ng-model="search" placeholder="search by title" />
       <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
         <li>
@@ -32,59 +148,51 @@
         </li>
       </ul> -->
 
-      <!-- <div class="product" ng-repeat="product in ctrl.products">
+
+
+
+
+<!-- products -->
+    <!-- <div class="grid">
+      <div class="product grid-item" ng-repeat="product in ctrl.products">
         <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
         <img src="{{product.image_link}}" alt="">
-        <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
-        <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
 
+        <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
+
+        <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
           <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
             <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
             <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
             <input type="submit" ng-click="ctrl.editformshow=false">
           </form>
-      </div> -->
+      </div>
+    </div> -->
 
 
-
-      <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
-        <h4>{{swatch.product}} {{swatch._id}}</h4>
+<!-- swatches -->
+      <!-- <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
+        <h4>{{swatch.product}}</h4>
         <a href="{{swatch.imageLink}}" target="_blank"><img src="{{swatch.imageLink}}" alt=""></a>
         <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
-          <!-- <p>{{swatch.colors.vibrant.rgb}}</p> -->
-          <!-- <p>{{swatch.colors.vibrant.isSkin}}</p> -->
-
         <div class="color-block">
-
           <div ng-if="swatch.colors.vibrant.isSkin == false" ng-style="{'background-color': swatch.colors.vibrant.rgb[0]}">Vibrant: {{swatch.colors.vibrant[0]}}</div>
-
           <div ng-if="swatch.colors.lightVibrant.isSkin == false" ng-style="{'background-color': swatch.colors.lightVibrant.rgb[0]}">LightVibrant: {{swatch.colors.lightVibrant[0]}}</div>
-
           <div ng-if="swatch.colors.darkVibrant.isSkin == false" ng-style="{'background-color': swatch.colors.darkVibrant.rgb[0]}">darkVibrant: {{swatch.colors.darkVibrant[0]}}</div>
-
           <div ng-if="swatch.colors.muted.isSkin == false" ng-style="{'background-color': swatch.colors.muted.rgb[0]}">muted: {{swatch.colors.muted[0]}}</div>
-
           <div ng-if="swatch.colors.lightMuted.isSkin == false" ng-style="{'background-color': swatch.colors.lightMuted.rgb[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
-
           <div ng-if="swatch.colors.darkMuted.isSkin == false" ng-style="{'background-color': swatch.colors.darkMuted.rgb[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
-
         </div>
-
-      </div>
+      </div> -->
     </main>
 
-    <nav>
+<nav>
+  <div class="grid-item">
+    Heyo
+  </div>
+</nav>
 
-      <div ng-controller="AppController">
-        <input type="file" nv-file-select="" uploader="uploader" /><br/>
-        <ul>
-          <li ng-repeat="item in uploader.queue">
-            Name: <span ng-bind="item.file.name"></span><br/>
-            <button ng-click="item.upload()">upload</button>
-          </li>
-        </ul>
-      </div>
-
+    <aside>
       <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
       <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
         <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand" />
@@ -92,25 +200,30 @@
         <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
       </form>
 
-    </nav>
-
-    <aside>
       <h4 ng-click="toggle_form1 = !toggle_form1">New Swatch</h4>
       <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
         <select ng-model="ctrl.formdata.productId" ng-options="product._id as product.name for product in ctrl.products">
           </select>
         <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image" />
         <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone" />
+        <div ng-controller="AppController">
+          <input type="file" nv-file-select="" uploader="uploader" /><br/>
+          <ul>
+            <li ng-repeat="item in uploader.queue">
+              Name: <span ng-bind="item.file.name"></span><br/>
+              <button ng-click="item.upload()">upload</button>
+            </li>
+          </ul>
+        </div>
         <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
       </form>
 
       <!--user login  -->
       <section ng-controller="LoginModalCtrl as auth">
         <div class="well">
-          {{auth.user.email}}
+          <a href="/users/{{auth.user.id}}">{{auth.user.email}}</a>
         </div>
 
-        <button ng-click="auth.getUsers()" type="button" name="button">test</button>
         <button ng-click="auth.logout()" type="button" name="button">log out</button>
 
         <div>
@@ -136,7 +249,13 @@
 
     <!-- end of "container" -->
   </div>
+  <footer>
+    <div class="footer">
+      made by mark
+    </div>
+  </footer>
   </div>
+
 
 </body>
 
