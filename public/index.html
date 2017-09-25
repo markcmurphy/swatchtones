@@ -119,25 +119,25 @@
 <main class="grid-container">
 <div class="grid">
   <div class="grid-item grid-item-alpha">
-    <h2>Foundation</h2>
+    <h3>Foundation</h3>
   </div>
   <div class="grid-item">
-    <h4>Concealer</h4>
+    <h3>Concealer</h3>
   </div>
   <div class="grid-item">
-    <h4>Highlighter/<br>Bronzer/<br>Blush</h4>
+    <h3>Highlighter/<br>Bronzer/<br>Blush</h3>
   </div>
   <div class="grid-item">
-    Eye Shadow
+    <h3>Eye Shadow</h3>
   </div>
   <div class="grid-item">
-    Eye Liner
+    <h3>Eye Liner</h3>
   </div>
   <div class="grid-item">
-    Mascara
+    <h3>Mascara</h3>
   </div>
   <div class="grid-item">
-    Tools
+    <h3>Tools</h3>
   </div>
 </div>
 <!-- search bar for products -->
@@ -221,7 +221,7 @@
       <!--user login  -->
       <section ng-controller="LoginModalCtrl as auth">
         <div class="well">
-          {{auth.user.email}}
+          <a href="/users/{{auth.user.id}}">{{auth.user.email}}</a>
         </div>
 
         <button ng-click="auth.logout()" type="button" name="button">log out</button>
