@@ -1,110 +1,32 @@
-/*navbar*/
-/*https://work.smarchal.com/twbscolor*/
-
-.navbar-default {
-  background-color: #fe6fb8;
-  border-color: #f763ae;
-}
-.navbar-default .navbar-brand {
-  color: #ffffff;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #ffc6e3;
-}
-.navbar-default .navbar-text {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #ffc6e3;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #fe6fb8;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #ffc6e3;
-  background-color: #f763ae;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
-  background-color: #f763ae;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #ffc6e3;
-  background-color: #f763ae;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #ffc6e3;
-  background-color: #f763ae;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #ffc6e3;
-  background-color: #f763ae;
-}
-.navbar-default .navbar-toggle {
-  border-color: #f763ae;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #f763ae;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ffffff;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ffffff;
-}
-.navbar-default .navbar-link {
-  color: #ffffff;
-}
-.navbar-default .navbar-link:hover {
-  color: #ffc6e3;
-}
-
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #ffffff;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffc6e3;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ffc6e3;
-    background-color: #f763ae;
-  }
-}
-
-
 body {
   display: flex;
   min-height: 100vh;
+  margin: 0;
   flex-direction: column;
+  /*flex-flow: row wrap;*/
   font-family: Verdana, Geneva, sans-serif;
   background-color: #FFFA70;
+}
+
+/*.wrapper {
+  display: flex;
+  .wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* We tell all items to be 100% width */
+.header, .main, .nav, .aside, .footer {
+  flex: 1 100%;
 }
 
 .container {
   display: flex;
   flex: 1;
   flex-direction: column;
-  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+  /*border-radius: 5px;*/
 }
 
 .carousel .carousel-inner img {
@@ -133,7 +55,43 @@ nav, aside {
   border-radius: 5px;
 }
 
+.grid-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+}
+
+.grid {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+ .grid-item {
+  border: 1px solid #fff;
+  width: 200px;
+  height: 200px;
+  background-color: #FF87C4;
+  padding: 5px;
+}
+
+ nav div.grid-item {
+  background-color: lightblue;
+  width: auto;
+}
+
+
+/*small devices, tablets over 768px*/
 @media (min-width: 768px) {
+  body{
+    background-color: lightgreen;
+  }
   .container {
     flex-direction: row;
     flex: 1;
@@ -179,7 +137,8 @@ nav, aside {
 }
 
 
-@media (min-width: 1200px) {
+/* Medium Devices, Desktops */
+@media (min-width: 992px) {
 
   body {
     background-color: #78C6FE;
@@ -195,6 +154,11 @@ nav, aside {
     flex: initial;
   }
   /*end of @media*/
+}
+
+/* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
 }
 
 /*the following code is being used for testing and may be deleted*/
