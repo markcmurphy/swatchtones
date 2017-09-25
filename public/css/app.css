@@ -1,21 +1,43 @@
+@media (max-width: 768px) {
+  header, main, .footer, .container, .grid, .grid-container, .grid-item, .grid-item-alpha {
+    flex: 1 100%;
+  }
+}
+
 body {
   display: flex;
   min-height: 100vh;
+  margin: 0;
   flex-direction: column;
   font-family: Verdana, Geneva, sans-serif;
+  background-color: #FFFA70;
 }
 
-.container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  border-radius: 5px;
+footer {
+  max-height: 50px;
+  background-color: black;
+  color: white;
 }
 
 header {
-  text-align: center;
-  font-size: 50px;
-  color: #4d5052;
+  max-height: 50px;
+}
+
+.container {
+  display: -webkit-flex;
+  width: 98%;
+  display: flex;
+  -webkit-flex-flow: row-reverse wrap;
+  flex-flow: row-reverse wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.carousel .carousel-inner img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 main {
@@ -27,36 +49,110 @@ nav {
 }
 
 nav, aside {
-  background-color: lightgrey;
+  background-color: #FFCB87;
 }
 
-.survivor {
+.swatch {
   margin: 5px;
   padding: 5px 15px 5px 15px;
   background-color: plum;
   border-radius: 5px;
 }
 
+.grid-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: stretch;
+}
+
+.grid-item {
+  border: 1px solid #fff;
+  padding: 16px 15px 13.5px 19px;
+  background-color: #FF87C4;
+  -webkit-flex: 1 0 300px;
+  flex: 1 0 300px;
+}
+
+nav div.grid-item {
+  background-color: lightblue;
+  width: auto;
+}
+
+
+/*small devices, tablets over 768px*/
+
 @media (min-width: 768px) {
+  body {
+    background-color: lightgreen;
+  }
   .container {
-    flex-direction: row;
     flex: 1;
   }
   nav, aside {
     flex: 0 0 12em;
   }
+  .carousel .carousel-inner img {
+    width: 100%;
+    height: 20em;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  .grid-container {
+    display: flex;
+  }
+  .grid-item {
+    border: 1px solid #fff;
+    background-color: #FF87C4;
+  }
+  /*end of @media*/
 }
+
+
+/* Medium Devices, Desktops */
+
+@media (min-width: 992px) {
+  body {
+    background-color: #78C6FE;
+  }
+  .grid-item {
+    padding: 32px 30px 27px 38px;
+  }
+  /*end of @media*/
+}
+
+
+/* Large Devices, Wide Screens */
+
+@media (min-width: 1200px) {
+  body {
+    background-color: lavender;
+  }
+  .nav {
+    order: 1;
+  }
+  .main {
+    order: 2;
+  }
+  .aside {
+    order: 3;
+  }
+  .footer {
+    order: 4;
+  }
+}
+
 
 /*the following code is being used for testing and may be deleted*/
+
 img {
-  height: 60px;
+  height: 150px;
   width: auto;
-}
-
-.product {
-  background-color: DeepSkyBlue;
-}
-
-.swatch {
-  background-color: HoneyDew;
 }
