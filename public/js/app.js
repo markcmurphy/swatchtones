@@ -157,6 +157,7 @@ app.controller('mainController', ['$http', function($http) {
 app.controller('LoginModalCtrl', function($http) {
   const controller = this;
   this.user = {};
+  this.isLoggedIn = false;
 
   this.loginRequired = function(req, res, next) {
     if (req.user) {
@@ -190,6 +191,7 @@ app.controller('LoginModalCtrl', function($http) {
       }).then(
         function(response) {
           console.log(response.data.foundUser);
+          this.isLoggedIn = true;
           this.user = response.data.foundUser;
           localStorage.setItem('token', JSON.stringify(response.data.token));
         }.bind(this))
