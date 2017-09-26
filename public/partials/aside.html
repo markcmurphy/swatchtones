@@ -1,0 +1,55 @@
+
+      <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
+      <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
+        <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand" />
+        <input type="text" ng-model="ctrl.formdata.name" placeholder="name" />
+        <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
+      </form>
+
+      <h4 ng-click="toggle_form1 = !toggle_form1">New Swatch</h4>
+      <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
+        <select ng-model="ctrl.formdata.productId" ng-options="product._id as product.name for product in ctrl.products">
+          </select>
+        <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image" />
+        <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone" />
+        <div ng-controller="AppController">
+          <input type="file" nv-file-select="" uploader="uploader" /><br/>
+          <ul>
+            <li ng-repeat="item in uploader.queue">
+              Name: <span ng-bind="item.file.name"></span><br/>
+              <button ng-click="item.upload()">upload</button>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
+      </form>
+
+      <!--user login  -->
+        <div class="well" ng-controller="LoginModalCtrl as auth">
+        <a ui-sref="users({ id:auth.user._id})">{{auth.user.email}}</a>
+        <div ui-view="user">
+
+        </div>
+      </div>
+        <section ng-controller="LoginModalCtrl as auth">
+
+        <button ng-click="auth.logout()" type="button" name="button">log out</button>
+
+        <div>
+          <form ng-submit="auth.login();">
+            <input type="email" ng-model="auth.email" placeholder="email">
+            <input type="password" ng-model="auth.password" placeholder="password">
+            <input type="submit" name="" class="btn btn-primary" value="login">
+          </form>
+        </div>
+
+        <div>
+          <form ng-submit="auth.create();">
+            <input type="email" ng-model="auth.email" placeholder="email">
+            <input type="password" ng-model="auth.password" placeholder="password">
+            <input type="submit" name="" class="btn btn-primary" value="create">
+          </form>
+        </div>
+
+        <!-- end of testing auth -->
+      </section>

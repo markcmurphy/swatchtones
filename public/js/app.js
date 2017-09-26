@@ -1,4 +1,4 @@
-const app = angular.module('MyApp', ['angular.filter', 'angularFileUpload']);
+const app = angular.module('MyApp', ['angular.filter', 'angularFileUpload', 'ui.router']);
 
 app.controller('AppController', function($scope, FileUploader) {
   $scope.uploader = new FileUploader({
@@ -14,14 +14,71 @@ app.controller('AppController', function($scope, FileUploader) {
     };
 });
 
-app.controller('mainController', ['$http', function($http) {
+app.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/home');
+
+  $stateProvider
+
+    .state('home', {
+      url: '/home',
+      templateUrl: './partials/main.html'
+    })
+
+    .state('home.paragraph', {
+      url: '/paragraph',
+      template: 'I could sure use a drink right now.'
+    })
+
+    .state('products', {
+      url: '/products',
+      templateUrl: './partials/products.html',
+      controller: 'mainController'
+    })
+
+    .state('singleProduct', {
+      url: '/products/:id',
+      templateUrl: './partials/product.html',
+      controller: 'mainController',
+      resolve: {
+      product: ['$stateParams',
+            function($stateParams) {
+              console.log($stateParams.id);
+              return $stateParams.id;
+            }
+          ]
+      }
+    })
+
+    .state('users', {
+      url: '/users/:id',
+      templateUrl: './partials/userProfile.html',
+      controller: 'LoginModalCtrl',
+      controllerAs: 'auth',
+      resolve: {
+        user: ['$stateParams',
+          function($stateParams) {
+            console.log($stateParams.id);
+            return $stateParams.id;
+          }
+        ]
+    }
+  })
+
+  //end of app.config
+});
+
+app.controller('mainController', ['$http', '$stateParams', function($http, $stateParams, $routeProvider, $urlRouterProvider) {
   const controller = this;
   this.products = {};
+  this.product = {};
+  this.activeProduct = $stateParams;
   this.swatches = {};
   this.formdata = {};
   this.colors = {};
   this.values = {};
   this.rgb = {};
+
 
   // get swatches
   this.getSwatches = () => {
@@ -29,7 +86,6 @@ app.controller('mainController', ['$http', function($http) {
         method: 'GET',
         url: '/swatches'
       }).then(response => {
-        console.log('get swatches ran');
         this.swatches = response.data;
 
       })
@@ -53,6 +109,18 @@ app.controller('mainController', ['$http', function($http) {
         url: '/products'
       }).then(response => {
         this.products = response.data;
+      })
+      .catch(err => console.log(err));
+  }
+
+  this.getProduct = (activeProduct) => {
+    $http({
+        method: 'GET',
+        url: '/products/' + activeProduct.id
+      }).then(response => {
+        console.log('getProduct ran');
+        this.product = response.data;
+
       })
       .catch(err => console.log(err));
   }
@@ -138,10 +206,11 @@ app.controller('mainController', ['$http', function($http) {
           imageLink: this.formdata.imageLink,
           productColor: this.productColor,
           skinTone: this.formdata.skinTone,
-          productId: this.formdata.productId
+          productId: this.formdata.productId,
+          colors: this.colors
         }
       }).then(response => {
-        console.log(response.data);
+        console.log(response.data.colors);
         controller.formdata = {};
         this.getProducts();
         this.getSwatches();
@@ -154,9 +223,11 @@ app.controller('mainController', ['$http', function($http) {
   //  end of mainController
 }]);
 
-app.controller('LoginModalCtrl', function($http) {
+app.controller('LoginModalCtrl', ['$http','$stateParams', function($http, $stateParams) {
   const controller = this;
   this.user = {};
+  this.isLoggedIn = false;
+  this.activeUser = $stateParams;
 
   this.loginRequired = function(req, res, next) {
     if (req.user) {
@@ -179,7 +250,7 @@ app.controller('LoginModalCtrl', function($http) {
       })
     },
 
-  this.login = function() {
+    this.login = function() {
       $http({
         method: 'POST',
         url: '/sessions/login',
@@ -190,6 +261,7 @@ app.controller('LoginModalCtrl', function($http) {
       }).then(
         function(response) {
           console.log(response.data.foundUser);
+          this.isLoggedIn = true;
           this.user = response.data.foundUser;
           localStorage.setItem('token', JSON.stringify(response.data.token));
         }.bind(this))
@@ -200,19 +272,34 @@ app.controller('LoginModalCtrl', function($http) {
       location.reload();
     }
 
-    this.getUsers = function() {
-      $http({
-        method: 'POST',
-        url: '/users',
-        headers: {
-          token: JSON.parse(localStorage.getItem('token'))
-        }
-      }).then(function(response) {
-        this.user = response.data;
-        this.error = "Unauthorized";
-      }.bind(this));
-    }
+  this.getUsers = function() {
+    $http({
+      method: 'POST',
+      url: '/users',
+      headers: {
+        token: JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      this.user = response.data;
+      this.error = "Unauthorized";
+    }.bind(this));
+  }
 
-this.getUsers();
+  this.getSingleUser = function(activeUser) {
+    $http({
+      method: 'GET',
+      url: '/users/' + activeUser.id,
+      headers: {
+        token: JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      console.log('get single user ran');
+      this.user = response.data;
+      this.error = "Unauthorized";
+    }.bind(this));
+  }
+
+// to run on page load
+  this.getUsers();
   // end of LoginModalCtrl
-});
+}]);

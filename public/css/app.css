@@ -44,6 +44,10 @@ main {
   flex: 1;
 }
 
+view {
+  flex: 1;
+}
+
 nav {
   order: -1;
 }
@@ -79,6 +83,17 @@ nav, aside {
   background-color: #FF87C4;
   -webkit-flex: 1 0 300px;
   flex: 1 0 300px;
+}
+
+.grid-product {
+  justify-content: center;
+  margin:5px;
+  padding: 5px;
+  /*border: 1px solid #fff;*/
+  /*padding: 16px 15px 13.5px 19px;*/
+  /*background-color: #FF87C4;*/
+  /*-webkit-flex: 1 0 300px;
+  flex: 1 0 300px;*/
 }
 
 nav div.grid-item {
@@ -139,6 +154,9 @@ nav div.grid-item {
     order: 1;
   }
   .main {
+    order: 2;
+  }
+  .view {
     order: 2;
   }
   .aside {

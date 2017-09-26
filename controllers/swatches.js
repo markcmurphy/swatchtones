@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
   Products.findById(req.body.productId, (err, foundProducts) => {
     Swatches.create(req.body, (err, createdSwatch) => {
       let v = new Vibrant(createdSwatch.imageLink)
+      console.log('1 ' + createdSwatch);
       v.getPalette()
       .then((palette) => {
       createdSwatch.colors.vibrant.rgb.push('rgb(' + palette.Vibrant._rgb.join(', ') + ')');
@@ -46,16 +47,21 @@ router.post('/', (req, res) => {
       createdSwatch.colors.lightMuted.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
       createdSwatch.colors.darkMuted.rgb.push('rgb(' + palette.DarkMuted._rgb.join(', ') + ')');
       createdSwatch.colors.darkMuted.isSkin = isSkin(palette.Vibrant._rgb[0],palette.Vibrant._rgb[1],palette.Vibrant._rgb[2]);
+      console.log('2 ' + createdSwatch);
       createdSwatch.save((err, data) => {
       });
+      foundProducts.swatches.push(createdSwatch);
+      foundProducts.save((err, data) => {
+    });
     })
-        res.json(createdSwatch);
-        foundProducts.swatches.push(createdSwatch);
-        foundProducts.save((err, data) => {
-      });
+    console.log('3 ' + createdSwatch);
+
+
+      res.json(createdSwatch);
     });
   });
 });
+
 
 //Delete Swatch
 router.delete('/:id', (req, res)=>{

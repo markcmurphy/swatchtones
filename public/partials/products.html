@@ -1,0 +1,27 @@
+
+<!-- search bar for products -->
+<input type="text" ng-model="search" placeholder="search by title" />
+
+<!-- product view -->
+
+<!-- <div class="well" ui-view="product"> </div> -->
+
+<!-- products -->
+<div class="grid">
+<div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
+
+
+  <h4><a ui-sref="singleProduct({ id:product._id})">{{product.name}}</a></h4>
+
+  <img src="{{product.image_link}}" alt="">
+
+  <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
+
+  <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
+    <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
+      <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
+      <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
+      <input type="submit" ng-click="ctrl.editformshow=false">
+    </form>
+</div>
+</div>
