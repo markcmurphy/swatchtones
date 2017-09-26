@@ -18,22 +18,25 @@
 
 <body ng-controller="mainController as ctrl">
 
-<header>
-  <div ng-include="'./partials/header.html'"></div>
-</header>
+  <header>
+    <div ng-include="'./partials/header.html'"></div>
+  </header>
 
-  <div ng-include="'./partials/carousel.html'"></div>
+  <!-- <div ng-include="'./partials/carousel.html'"></div> -->
 
   <div class="container">
 
-  <main>
-    <div ng-include="'./partials/main.html'"></div>
-  </main>
+
+
+    <main>
+      <div ui-view> </div>
+      <!-- <div ng-include="'./partials/main.html'"></div> -->
+    </main>
+
 
     <nav>
       <div ng-include="'./partials/nav.html'"></div>
     </nav>
-
 
     <aside>
       <div ng-include="'./partials/aside.html'"></div>
@@ -41,11 +44,11 @@
 
     <!-- end of "container" -->
   </div>
-  
+
   <footer>
     <div ng-include="'./partials/footer.html'"></div>
   </footer>
 
-
 </body>
+
 </html>

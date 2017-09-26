@@ -1,4 +1,4 @@
-const app = angular.module('MyApp', ['angular.filter', 'angularFileUpload']);
+const app = angular.module('MyApp', ['angular.filter', 'angularFileUpload', 'ui.router']);
 
 app.controller('AppController', function($scope, FileUploader) {
   $scope.uploader = new FileUploader({
@@ -217,4 +217,31 @@ app.controller('LoginModalCtrl', function($http) {
 
 this.getUsers();
   // end of LoginModalCtrl
+});
+
+app.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/home');
+
+  $stateProvider
+
+      .state('home', {
+        url: '/home',
+        templateUrl: './partials/main.html'
+      })
+
+      .state('home.products', {
+        url: '/products',
+        templateUrl: './partials/products.html',
+        controller: 'mainController'
+      })
+
+        .state('home.paragraph', {
+        url: '/paragraph',
+        template: 'I could sure use a drink right now.'
+      })
+
+
+
+//end of app.config
 });
