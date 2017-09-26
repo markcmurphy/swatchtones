@@ -14,14 +14,16 @@ app.controller('AppController', function($scope, FileUploader) {
     };
 });
 
-app.controller('mainController', ['$http', function($http) {
+app.controller('mainController', ['$http', function($http, $stateParams, $routeProvider) {
   const controller = this;
   this.products = {};
+  this.product = {};
   this.swatches = {};
   this.formdata = {};
   this.colors = {};
   this.values = {};
   this.rgb = {};
+
 
   // get swatches
   this.getSwatches = () => {
@@ -53,6 +55,16 @@ app.controller('mainController', ['$http', function($http) {
         url: '/products'
       }).then(response => {
         this.products = response.data;
+      })
+      .catch(err => console.log(err));
+  }
+
+  this.getProduct = (product) => {
+    $http({
+        method: 'GET',
+        url: '/products/' + product._id
+      }).then(response => {
+        this.product = response.data;
       })
       .catch(err => console.log(err));
   }
@@ -246,6 +258,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: './partials/products.html',
         controller: 'mainController'
       })
+
+      .state('products.single', {
+        url: '/products/:id',
+        templateUrl: './partials/product.html',
+        controller: 'mainController'
+
+    })
 
 
 
