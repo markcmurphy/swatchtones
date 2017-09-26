@@ -36,16 +36,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'mainController'
     })
 
-    .state('products.single', {
-      url: '/:id',
-      views: {
-        "product@products" : {
-          templateUrl: './partials/product.html',
-          controller: 'mainController'
-          }
-        },
-        resolve: {
-          product: ['$stateParams',
+    .state('singleProduct', {
+      url: '/products/:id',
+      templateUrl: './partials/product.html',
+      controller: 'mainController',
+      resolve: {
+      product: ['$stateParams',
             function($stateParams) {
               console.log($stateParams.id);
               return $stateParams.id;

@@ -11,7 +11,7 @@
 <div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
 
 
-  <h4><a ui-sref="products.single({ id:product._id})">{{product.name}}</a></h4>
+  <h4><a ui-sref="singleProduct({ id:product._id})">{{product.name}}</a></h4>
 
   <img src="{{product.image_link}}" alt="">
 

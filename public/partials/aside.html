@@ -27,8 +27,6 @@
       <!--user login  -->
         <div class="well" ng-controller="LoginModalCtrl as auth">
         <a ui-sref="users({ id:auth.user._id})">{{auth.user.email}}</a>
-
-          <!-- <a href="/users/{{auth.user._id}}">{{auth.user.email}}</a> -->
         <div ui-view="user">
 
         </div>
