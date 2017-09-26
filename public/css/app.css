@@ -44,6 +44,10 @@ main {
   flex: 1;
 }
 
+view {
+  flex: 1;
+}
+
 nav {
   order: -1;
 }
@@ -139,6 +143,9 @@ nav div.grid-item {
     order: 1;
   }
   .main {
+    order: 2;
+  }  
+  .view {
     order: 2;
   }
   .aside {

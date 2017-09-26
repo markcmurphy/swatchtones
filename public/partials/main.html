@@ -1,5 +1,5 @@
 
-<main class="grid-container">
+<view class="grid-container">
   <div class="grid">
     <div class="grid-item grid-item-alpha">
       <h3>Foundation</h3>
@@ -27,14 +27,7 @@
       <h3>Tools</h3>
     </div>
   </div>
-  <div ui-view> </div>
-  <!-- search bar for products -->
-  <!-- <input type="text" ng-model="search" placeholder="search by title" />
-  <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
-    <li>
-      <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
-    </li>
-  </ul> -->
+  <div ui-view> </div>  
 
   <!-- swatches -->
   <!-- <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
@@ -50,4 +43,4 @@
       <div ng-if="swatch.colors.darkMuted.isSkin == false" ng-style="{'background-color': swatch.colors.darkMuted.rgb[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
     </div>
   </div> -->
-</main>
+</view>

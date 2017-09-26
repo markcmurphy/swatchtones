@@ -230,15 +230,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: './partials/main.html'
       })
 
-      .state('home.products', {
-        url: '/products',
-        templateUrl: './partials/products.html',
-        controller: 'mainController'
-      })
+      // .state('home.products', {
+      //   url: '/products',
+      //   templateUrl: './partials/products.html',
+      //   controller: 'mainController'
+      // })
 
         .state('home.paragraph', {
         url: '/paragraph',
         template: 'I could sure use a drink right now.'
+      })
+
+      .state('products', {
+        url: '/products',
+        templateUrl: './partials/products.html',
+        controller: 'mainController'
       })
 
 

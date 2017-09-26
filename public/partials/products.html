@@ -1,7 +1,10 @@
 
+<!-- search bar for products -->
+<input type="text" ng-model="search" placeholder="search by title" />
+
 <!-- products -->
 <div class="grid">
-<div class="product grid-item" ng-repeat="product in ctrl.products">
+<div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
   <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
   <img src="{{product.image_link}}" alt="">
 
