@@ -206,10 +206,11 @@ app.controller('mainController', ['$http', '$stateParams', function($http, $stat
           imageLink: this.formdata.imageLink,
           productColor: this.productColor,
           skinTone: this.formdata.skinTone,
-          productId: this.formdata.productId
+          productId: this.formdata.productId,
+          colors: this.colors
         }
       }).then(response => {
-        console.log(response.data);
+        console.log(response.data.colors);
         controller.formdata = {};
         this.getProducts();
         this.getSwatches();
