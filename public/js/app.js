@@ -20,51 +20,56 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
-      .state('home', {
-        url: '/home',
-        templateUrl: './partials/main.html'
-      })
+    .state('home', {
+      url: '/home',
+      templateUrl: './partials/main.html'
+    })
 
-      // .state('home.products', {
-      //   url: '/products',
-      //   templateUrl: './partials/products.html',
-      //   controller: 'mainController'
-      // })
+    .state('home.paragraph', {
+      url: '/paragraph',
+      template: 'I could sure use a drink right now.'
+    })
 
-        .state('home.paragraph', {
-        url: '/paragraph',
-        template: 'I could sure use a drink right now.'
-      })
+    .state('products', {
+      url: '/products',
+      templateUrl: './partials/products.html',
+      controller: 'mainController'
+    })
 
-      .state('products', {
-        url: '/products',
-        templateUrl: './partials/products.html',
-        controller: 'mainController'
-      })
-
-      .state('products.single', {
-        url: '/:id',
-        templateUrl: './partials/product.html',
-        controller: 'mainController',
-        controllerAs: 'ctrl',
+    .state('products.single', {
+      url: '/:id',
+      views: {
+        "product@products" : {
+          templateUrl: './partials/product.html',
+          controller: 'mainController'
+          }
+        },
         resolve: {
           product: ['$stateParams',
-          function($stateParams){
+            function($stateParams) {
+              console.log($stateParams.id);
+              return $stateParams.id;
+            }
+          ]
+      }
+    })
+
+    .state('users', {
+      url: '/users/:id',
+      templateUrl: './partials/userProfile.html',
+      controller: 'LoginModalCtrl',
+      controllerAs: 'auth',
+      resolve: {
+        user: ['$stateParams',
+          function($stateParams) {
             console.log($stateParams.id);
             return $stateParams.id;
-          }]
-        }
+          }
+        ]
+    }
+  })
 
-        // resolve: {
-        //   resolveProduct: function($stateParams) {
-        //     return $stateParams.id;
-        //   }
-        // }
-        })
-
-
-
-//end of app.config
+  //end of app.config
 });
 
 app.controller('mainController', ['$http', '$stateParams', function($http, $stateParams, $routeProvider, $urlRouterProvider) {
@@ -221,10 +226,11 @@ app.controller('mainController', ['$http', '$stateParams', function($http, $stat
   //  end of mainController
 }]);
 
-app.controller('LoginModalCtrl', function($http) {
+app.controller('LoginModalCtrl', ['$http','$stateParams', function($http, $stateParams) {
   const controller = this;
   this.user = {};
   this.isLoggedIn = false;
+  this.activeUser = $stateParams;
 
   this.loginRequired = function(req, res, next) {
     if (req.user) {
@@ -247,7 +253,7 @@ app.controller('LoginModalCtrl', function($http) {
       })
     },
 
-  this.login = function() {
+    this.login = function() {
       $http({
         method: 'POST',
         url: '/sessions/login',
@@ -269,19 +275,34 @@ app.controller('LoginModalCtrl', function($http) {
       location.reload();
     }
 
-    this.getUsers = function() {
-      $http({
-        method: 'POST',
-        url: '/users',
-        headers: {
-          token: JSON.parse(localStorage.getItem('token'))
-        }
-      }).then(function(response) {
-        this.user = response.data;
-        this.error = "Unauthorized";
-      }.bind(this));
-    }
+  this.getUsers = function() {
+    $http({
+      method: 'POST',
+      url: '/users',
+      headers: {
+        token: JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      this.user = response.data;
+      this.error = "Unauthorized";
+    }.bind(this));
+  }
 
-this.getUsers();
+  this.getSingleUser = function(activeUser) {
+    $http({
+      method: 'GET',
+      url: '/users/' + activeUser.id,
+      headers: {
+        token: JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      console.log('get single user ran');
+      this.user = response.data;
+      this.error = "Unauthorized";
+    }.bind(this));
+  }
+
+// to run on page load
+  this.getUsers();
   // end of LoginModalCtrl
-});
+}]);

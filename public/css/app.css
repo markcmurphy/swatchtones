@@ -85,6 +85,17 @@ nav, aside {
   flex: 1 0 300px;
 }
 
+.grid-product {
+  justify-content: center;
+  margin:5px;
+  padding: 5px;
+  /*border: 1px solid #fff;*/
+  /*padding: 16px 15px 13.5px 19px;*/
+  /*background-color: #FF87C4;*/
+  /*-webkit-flex: 1 0 300px;
+  flex: 1 0 300px;*/
+}
+
 nav div.grid-item {
   background-color: lightblue;
   width: auto;
@@ -144,7 +155,7 @@ nav div.grid-item {
   }
   .main {
     order: 2;
-  }  
+  }
   .view {
     order: 2;
   }

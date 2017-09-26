@@ -1,16 +1,20 @@
 <!-- product -->
 <div class="grid">
-<!-- <div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search"> -->
-  <div ng-controller="mainController">
-  <div>
-    Hi
-  <h4>{{product.name}}</a></h4>
-  <button ng-click="ctrl.getProduct(ctrl.activeProduct)" type="button" name="button">get product</button>
+  <!-- <button ng-click="ctrl.getProduct(ctrl.activeProduct)" type="button" name="button">get product</button> -->
+  <div class="grid-container" ng-init="ctrl.getProduct(ctrl.activeProduct)">
+    <div class="grid-product">
+  <ul>
+    <li>{{ctrl.product.brand}}</li>
+    <li>{{ctrl.product.name}}</li>
+    <li>{{ctrl.product.product_type}}</li>
+  </ul>
 
-    {{ctrl.product.name}}
-
-  <img src="{{product.image_link}}" alt="">
-
+    </div>
+    <div class="grid-product">
+      {{ctrl.product.description}}
   </div>
 
+<div class="grid-product">
+  <img src="{{ctrl.product.image_link}}" alt="">
+</div>
 </div>

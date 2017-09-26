@@ -2,13 +2,12 @@
 <!-- search bar for products -->
 <input type="text" ng-model="search" placeholder="search by title" />
 
+<!-- product view -->
+
+<!-- <div class="well" ui-view="product"> </div> -->
+
 <!-- products -->
 <div class="grid">
-  <div class="well">
-      <div ui-view> </div>
-  </div>
-  {{resolveProduct}}
-  {{activeId}}
 <div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
 
 

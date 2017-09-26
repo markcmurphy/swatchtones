@@ -1,0 +1,19 @@
+<!-- user profile -->
+
+<div class="grid">
+  <div class="grid-container" ng-init="ctrl.getSingleUser(auth.activeUser)">
+    <h1>{{auth.user.username}}</h1>
+    <div class="grid-product">
+  <ul>
+    <li>{{auth.user.email}}</li>
+  </ul>
+  </div>
+    <div class="grid-product">
+  <ul>
+    <li>{{auth.user.favorites}}</li>
+  </ul>
+  </div>
+<div class="grid-product">
+  <img src="{{auth.user.image_link}}" alt="">
+</div>
+</div>

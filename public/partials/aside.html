@@ -25,10 +25,15 @@
       </form>
 
       <!--user login  -->
-      <section ng-controller="LoginModalCtrl as auth">
-        <div class="well">
-          <a href="/users/{{auth.user.id}}">{{auth.user.email}}</a>
+        <div class="well" ng-controller="LoginModalCtrl as auth">
+        <a ui-sref="users({ id:auth.user._id})">{{auth.user.email}}</a>
+
+          <!-- <a href="/users/{{auth.user._id}}">{{auth.user.email}}</a> -->
+        <div ui-view="user">
+
         </div>
+      </div>
+        <section ng-controller="LoginModalCtrl as auth">
 
         <button ng-click="auth.logout()" type="button" name="button">log out</button>
 

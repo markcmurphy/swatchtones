@@ -25,14 +25,10 @@
   <div ng-include="'./partials/carousel.html'"></div>
 
   <div class="container">
-
-
-
     <main>
-      <div ui-view> </div>
-      <!-- <div ng-include="'./partials/main.html'"></div> -->
+      <div ui-view="product"> </div>
+      <div ui-view></div>
     </main>
-
 
     <nav>
       <div ng-include="'./partials/nav.html'"></div>
@@ -41,7 +37,6 @@
     <aside>
       <div ng-include="'./partials/aside.html'"></div>
     </aside>
-
     <!-- end of "container" -->
   </div>
 
