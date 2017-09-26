@@ -14,10 +14,64 @@ app.controller('AppController', function($scope, FileUploader) {
     };
 });
 
-app.controller('mainController', ['$http', function($http, $stateParams, $routeProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/home');
+
+  $stateProvider
+
+      .state('home', {
+        url: '/home',
+        templateUrl: './partials/main.html'
+      })
+
+      // .state('home.products', {
+      //   url: '/products',
+      //   templateUrl: './partials/products.html',
+      //   controller: 'mainController'
+      // })
+
+        .state('home.paragraph', {
+        url: '/paragraph',
+        template: 'I could sure use a drink right now.'
+      })
+
+      .state('products', {
+        url: '/products',
+        templateUrl: './partials/products.html',
+        controller: 'mainController'
+      })
+
+      .state('products.single', {
+        url: '/:id',
+        templateUrl: './partials/product.html',
+        controller: 'mainController',
+        controllerAs: 'ctrl',
+        resolve: {
+          product: ['$stateParams',
+          function($stateParams){
+            console.log($stateParams.id);
+            return $stateParams.id;
+          }]
+        }
+
+        // resolve: {
+        //   resolveProduct: function($stateParams) {
+        //     return $stateParams.id;
+        //   }
+        // }
+        })
+
+
+
+//end of app.config
+});
+
+app.controller('mainController', ['$http', '$stateParams', function($http, $stateParams, $routeProvider, $urlRouterProvider) {
   const controller = this;
   this.products = {};
   this.product = {};
+  this.activeProduct = $stateParams;
   this.swatches = {};
   this.formdata = {};
   this.colors = {};
@@ -31,7 +85,6 @@ app.controller('mainController', ['$http', function($http, $stateParams, $routeP
         method: 'GET',
         url: '/swatches'
       }).then(response => {
-        console.log('get swatches ran');
         this.swatches = response.data;
 
       })
@@ -59,12 +112,14 @@ app.controller('mainController', ['$http', function($http, $stateParams, $routeP
       .catch(err => console.log(err));
   }
 
-  this.getProduct = (product) => {
+  this.getProduct = (activeProduct) => {
     $http({
         method: 'GET',
-        url: '/products/' + product._id
+        url: '/products/' + activeProduct.id
       }).then(response => {
+        console.log('getProduct ran');
         this.product = response.data;
+
       })
       .catch(err => console.log(err));
   }
@@ -229,44 +284,4 @@ app.controller('LoginModalCtrl', function($http) {
 
 this.getUsers();
   // end of LoginModalCtrl
-});
-
-app.config(function($stateProvider, $urlRouterProvider) {
-
-  $urlRouterProvider.otherwise('/home');
-
-  $stateProvider
-
-      .state('home', {
-        url: '/home',
-        templateUrl: './partials/main.html'
-      })
-
-      // .state('home.products', {
-      //   url: '/products',
-      //   templateUrl: './partials/products.html',
-      //   controller: 'mainController'
-      // })
-
-        .state('home.paragraph', {
-        url: '/paragraph',
-        template: 'I could sure use a drink right now.'
-      })
-
-      .state('products', {
-        url: '/products',
-        templateUrl: './partials/products.html',
-        controller: 'mainController'
-      })
-
-      .state('products.single', {
-        url: '/products/:id',
-        templateUrl: './partials/product.html',
-        controller: 'mainController'
-
-    })
-
-
-
-//end of app.config
 });

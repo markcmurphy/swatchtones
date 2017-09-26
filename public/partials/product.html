@@ -2,11 +2,15 @@
 <div class="grid">
 <!-- <div class="product grid-item" ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search"> -->
   <div ng-controller="mainController">
+  <div>
+    Hi
+  <h4>{{product.name}}</a></h4>
+  <button ng-click="ctrl.getProduct(ctrl.activeProduct)" type="button" name="button">get product</button>
 
-  <h4>{{products.name}}</a></h4>
+    {{ctrl.product.name}}
 
-  <img src="{{products.image_link}}" alt="">
+  <img src="{{product.image_link}}" alt="">
 
-</div>
+  </div>
 
 </div>
