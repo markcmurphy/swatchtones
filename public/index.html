@@ -16,163 +16,36 @@
   <title>SwatchTones</title>
 </head>
 
+<body ng-controller="mainController as ctrl">
+
 <header>
-  <body ng-controller="mainController as ctrl">
-</header>
-
-
   <div ng-include="'./partials/header.html'"></div>
-
+</header>
 
   <div ng-include="'./partials/carousel.html'"></div>
 
-
   <div class="container">
-    <main class="grid-container">
-      <div class="grid">
-        <div class="grid-item grid-item-alpha">
-          <h3>Foundation</h3>
-        </div>
-        <div class="grid-item">
-          <h3>Concealer</h3>
-        </div>
-        <div class="grid-item">
-          <h4>Highlighter/<br>Bronzer/<br>Blush</h4>
-        </div>
-        <div class="grid-item">
-          <h3>Eye Shadow</h3>
-        </div>
-        <div class="grid-item">
-          <h3>Eye Liner</h3>
-        </div>
-        <div class="grid-item">
-          <h3>Mascara</h3>
-        </div>
-        <div class="grid-item">
-          <h3>Tools</h3>
-        </div>
-      </div>
-      <!-- search bar for products -->
-      <!-- <input type="text" ng-model="search" placeholder="search by title" />
-      <ul ng-repeat="product in ctrl.products | searchField: 'ctrl.products.name':'ctrl.products.brand' | filter:search">
-        <li>
-          <a href="/products/{{product._id}}" target="_blank">{{product.name}} - {{product.brand}}</a>
-        </li>
-      </ul> -->
 
-
-
-
-
-      <!-- products -->
-      <!-- <div class="grid">
-      <div class="product grid-item" ng-repeat="product in ctrl.products">
-        <h4><a href="/products/{{product._id}}" target="_blank">{{product.name}}</a></h4>
-        <img src="{{product.image_link}}" alt="">
-
-        <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
-
-        <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
-          <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
-            <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
-            <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
-            <input type="submit" ng-click="ctrl.editformshow=false">
-          </form>
-      </div>
-    </div> -->
-
-
-      <!-- swatches -->
-      <!-- <div class="swatch" ng-repeat="swatch in ctrl.swatches track by $index">
-        <h4>{{swatch.product}}</h4>
-        <a href="{{swatch.imageLink}}" target="_blank"><img src="{{swatch.imageLink}}" alt=""></a>
-        <small ng-click="ctrl.deleteSwatch(swatch)">delete</small>
-        <div class="color-block">
-          <div ng-if="swatch.colors.vibrant.isSkin == false" ng-style="{'background-color': swatch.colors.vibrant.rgb[0]}">Vibrant: {{swatch.colors.vibrant[0]}}</div>
-          <div ng-if="swatch.colors.lightVibrant.isSkin == false" ng-style="{'background-color': swatch.colors.lightVibrant.rgb[0]}">LightVibrant: {{swatch.colors.lightVibrant[0]}}</div>
-          <div ng-if="swatch.colors.darkVibrant.isSkin == false" ng-style="{'background-color': swatch.colors.darkVibrant.rgb[0]}">darkVibrant: {{swatch.colors.darkVibrant[0]}}</div>
-          <div ng-if="swatch.colors.muted.isSkin == false" ng-style="{'background-color': swatch.colors.muted.rgb[0]}">muted: {{swatch.colors.muted[0]}}</div>
-          <div ng-if="swatch.colors.lightMuted.isSkin == false" ng-style="{'background-color': swatch.colors.lightMuted.rgb[0]}">lightmuted: {{swatch.colors.lightMuted[0]}}</div>
-          <div ng-if="swatch.colors.darkMuted.isSkin == false" ng-style="{'background-color': swatch.colors.darkMuted.rgb[0]}">darkMuted: {{swatch.colors.darkMuted[0]}}</div>
-        </div>
-      </div> -->
-    </main>
+  <main>
+    <div ng-include="'./partials/main.html'"></div>
+  </main>
 
     <nav>
-      <div class="grid-item">
-        Heyo
-      </div>
-      <!-- <div ng-repeat="p in ctrl.products">
-          <a href="/products/{{p._id}}"><small>{{p.brand}}</small></a>
-      </div> -->
+      <div ng-include="'./partials/nav.html'"></div>
     </nav>
 
+
     <aside>
-
-      <h4 ng-click="toggle_form = !toggle_form">New Product</h4>
-      <form name="newProductForm" ng-show="toggle_form" ng-submit="ctrl.processForm()">
-        <input type="text" ng-model="ctrl.formdata.brand" placeholder="brand" />
-        <input type="text" ng-model="ctrl.formdata.name" placeholder="name" />
-        <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
-      </form>
-
-      <h4 ng-click="toggle_form1 = !toggle_form1">New Swatch</h4>
-      <form ng-show="toggle_form1" ng-submit="ctrl.processSwatch()">
-        <select ng-model="ctrl.formdata.productId" ng-options="product._id as product.name for product in ctrl.products">
-          </select>
-        <input type="text" ng-model="ctrl.formdata.imageLink" placeholder="image" />
-        <input type="text" ng-model="ctrl.formdata.skinTone" placeholder="skin tone" />
-        <div ng-controller="AppController">
-          <input type="file" nv-file-select="" uploader="uploader" /><br/>
-          <ul>
-            <li ng-repeat="item in uploader.queue">
-              Name: <span ng-bind="item.file.name"></span><br/>
-              <button ng-click="item.upload()">upload</button>
-            </li>
-          </ul>
-        </div>
-        <button class="btn btn-primary btn-sm" type="submit" /> Submit </button>
-      </form>
-
-      <!--user login  -->
-      <section ng-controller="LoginModalCtrl as auth">
-        <div class="well">
-          <a href="/users/{{auth.user.id}}">{{auth.user.email}}</a>
-        </div>
-
-        <button ng-click="auth.logout()" type="button" name="button">log out</button>
-
-        <div>
-          <form ng-submit="auth.login();">
-            <input type="email" ng-model="auth.email" placeholder="email">
-            <input type="password" ng-model="auth.password" placeholder="password">
-            <input type="submit" name="" class="btn btn-primary" value="login">
-          </form>
-        </div>
-
-        <div>
-          <form ng-submit="auth.create();">
-            <input type="email" ng-model="auth.email" placeholder="email">
-            <input type="password" ng-model="auth.password" placeholder="password">
-            <input type="submit" name="" class="btn btn-primary" value="create">
-          </form>
-        </div>
-
-        <!-- end of testing auth -->
-      </section>
-
+      <div ng-include="'./partials/aside.html'"></div>
     </aside>
 
     <!-- end of "container" -->
   </div>
+  
   <footer>
-    <div class="footer">
-      made by mark
-    </div>
+    <div ng-include="'./partials/footer.html'"></div>
   </footer>
-  </div>
 
 
 </body>
-
 </html>
