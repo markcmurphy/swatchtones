@@ -148,6 +148,8 @@ a:visited {
 
 
 
+
+
 nav div.grid-item {
   background-color: #FFBC89;
   width: auto;
@@ -162,6 +164,13 @@ nav div.grid-item {
   }
   .container {
     flex: 1;
+  }
+  .grid-item {
+    padding: 30px;
+    height: auto;
+    width: auto;
+    text-align: center;
+    justify-content: center;
   }
   nav, aside {
     flex: 0 0 12em;
@@ -189,12 +198,13 @@ nav div.grid-item {
   body {
     background-color: #78C6FE;
   }
-  .grid-item {
-    padding: 32px 30px 27px 38px;
-  }
+
   /*end of @media*/
 }
 
+.color-grid {
+  flex-direction: row;
+}
 
 /* Large Devices, Wide Screens */
 

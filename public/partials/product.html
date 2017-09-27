@@ -1,4 +1,5 @@
 <!-- product -->
+
 <div class="grid">
   <div class="grid-container well" ng-init="ctrl.getProduct(ctrl.activeProduct)">
     <div class="grid-product">
@@ -19,6 +20,7 @@
 </div>
 </div>
 
+<div class="color-grid">
     <!-- swatches -->
     <div class="swatch" ng-repeat="swatch in ctrl.product.swatches track by $index">
 
@@ -37,5 +39,6 @@
     </div>
   </div>
 
+</div>
 </div>
 </div>
