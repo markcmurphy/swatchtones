@@ -12,6 +12,10 @@ a:link {
     color: white;
 }
 
+a:visited {
+    color: white;
+}
+
 body {
   display: flex;
   min-height: 100vh;
