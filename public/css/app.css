@@ -100,7 +100,9 @@ img{
   flex: 2;
 }
 
-
+a:visited {
+    color: white;
+}
 
 .grid-container {
   display: flex;
