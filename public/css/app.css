@@ -4,13 +4,21 @@
   }
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:link {
+    color: white;
+}
+
 body {
   display: flex;
   min-height: 100vh;
   margin: 0;
   flex-direction: column;
   font-family: Verdana, Geneva, sans-serif;
-  background-color: #FFFA70;
+  background-color: #78C6FE;
 }
 
 ul {
@@ -29,7 +37,7 @@ header {
 
 .container {
   display: -webkit-flex;
-  width: 98%;
+  width: 100%;
   display: flex;
   -webkit-flex-flow: row-reverse wrap;
   flex-flow: row-reverse wrap;
@@ -48,20 +56,47 @@ main {
   flex: 1;
 }
 
+view {
+  flex: 1;
+}
+
 nav {
   order: -1;
 }
 
 nav, aside {
-  background-color: #FFCB87;
+  /*background-color: lightgrey;*/
 }
 
 .swatch {
   margin: 5px;
+  /*justify-content: center;*/
+  /*text-align: center;*/
+  border: 1px solid #fff;
   padding: 5px 15px 5px 15px;
   background-color: plum;
   border-radius: 5px;
+  width: 175px;
+  height: auto;
 }
+
+.color-block {
+  /*justify-content: center;*/
+  /*margin:5px;*/
+  /*padding: 5px;*/
+  /*border: 1px solid #fff;*/
+  /*padding: 16px 15px 13.5px 19px;*/
+  /*background-color: #FF87C4;*/
+  /*-webkit-flex: 1 0 300px;*/
+  flex: -1;
+  width: 145px;
+}
+
+img{
+  flex: 2;
+}
+
+
 
 .grid-container {
   display: flex;
@@ -80,13 +115,35 @@ nav, aside {
 .grid-item {
   border: 1px solid #fff;
   padding: 16px 15px 13.5px 19px;
-  background-color: #FF87C4;
+  background-color: #9451E5;
   -webkit-flex: 1 0 300px;
   flex: 1 0 300px;
 }
 
+.aside-item {
+  border: 1px solid #fff;
+  padding: 16px 15px 13.5px 19px;
+  background-color: #9CE289;
+  /*-webkit-flex: 1 0 300px;*/
+  /*flex: 1 0 300px;*/
+  width: 100%;
+}
+
+.grid-product {
+  justify-content: center;
+  margin:5px;
+  padding: 5px;
+  /*border: 1px solid #fff;*/
+  /*padding: 16px 15px 13.5px 19px;*/
+  /*background-color: #FF87C4;*/
+  /*-webkit-flex: 1 0 300px;
+  /*flex: 1 0 */
+}
+
+
+
 nav div.grid-item {
-  background-color: lightblue;
+  background-color: #FFBC89;
   width: auto;
 }
 
@@ -95,7 +152,7 @@ nav div.grid-item {
 
 @media (min-width: 768px) {
   body {
-    background-color: lightgreen;
+    /*background-color: white;*/
   }
   .container {
     flex: 1;
@@ -114,7 +171,7 @@ nav div.grid-item {
   }
   .grid-item {
     border: 1px solid #fff;
-    background-color: #FF87C4;
+    background-color: #9451E5;
   }
   /*end of @media*/
 }
@@ -137,12 +194,15 @@ nav div.grid-item {
 
 @media (min-width: 1200px) {
   body {
-    background-color: lavender;
+    background-color: #78C6FE;
   }
   .nav {
     order: 1;
   }
   .main {
+    order: 2;
+  }
+  .view {
     order: 2;
   }
   .aside {
@@ -157,6 +217,6 @@ nav div.grid-item {
 /*the following code is being used for testing and may be deleted*/
 
 img {
-  height: 150px;
-  width: auto;
+  height: auto;
+  width: 145px;
 }

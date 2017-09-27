@@ -1,0 +1,42 @@
+<!--user login  -->
+
+<section ng-controller="LoginModalCtrl as auth">
+  <div class="aside-item" ng-show="auth.isLoggedIn == true" ng-mouseover="hoverActive8=true"
+  ng-mouseleave="hoverActive8=false"
+  ng-style="hoverActive8 ? {'background-color': '#FFD39B'} : {}">
+    <a ui-sref="users({ id:auth.user._id})">Welcome {{auth.user.email}}</a>
+    <div ui-view="user"></div>
+  </div>
+
+  <div class="aside-item" ng-show="auth.isLoggedIn == true"
+              ng-mouseover="hoverActive9=true"
+              ng-mouseleave="hoverActive9=false"
+              ng-style="hoverActive9 ? {'background-color': '#FFD39B'} : {}">
+    <h4 ng-click="toggle_form4 = !toggle_form4">Log Out</h4>
+    <button ng-show="toggle_form4" class="btn btn-primary" ng-click="auth.logout()" type="button" name="button">log out</button>
+  </div>
+
+  <div class="aside-item" ng-show="auth.isLoggedIn == false" ng-mouseover="hoverActive10=true"
+  ng-mouseleave="hoverActive10=false"
+  ng-style="hoverActive10 ? {'background-color': '#FFD39B'} : {}">
+    <h4 ng-click="toggle_form3 = !toggle_form3">Log In</h4>
+    <form ng-show="toggle_form3" ng-submit="auth.login();">
+      <input type="email" ng-model="auth.email" placeholder="email">
+      <input type="password" ng-model="auth.password" placeholder="password">
+      <input type="submit" name="" class="btn btn-primary" value="login">
+    </form>
+  </div>
+
+  <div class="aside-item" ng-show="auth.isLoggedIn == false" ng-mouseover="hoverActive11=true"
+  ng-mouseleave="hoverActive11=false"
+  ng-style="hoverActive11 ? {'background-color': '#FFD39B'} : {}">
+    <h4 ng-click="toggle_form2 = !toggle_form2">Create Account</h4>
+    <form ng-show="toggle_form2" ng-submit="auth.create();">
+      <input type="email" ng-model="auth.email" placeholder="email">
+      <input type="password" ng-model="auth.password" placeholder="password">
+      <input type="submit" name="" class="btn btn-primary" value="create">
+    </form>
+  </div>
+
+  <!-- end of testing auth -->
+</section>
