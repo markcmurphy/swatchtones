@@ -21,6 +21,7 @@
     "algorithmia": "^0.3.10",
     "angular-file-upload": "^2.5.0",
     "angular-filter": "^0.5.16",
+    "angular-ui-router": "^1.0.3",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "browserify": "^14.4.0",
