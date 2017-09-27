@@ -1,7 +1,6 @@
-
 <!-- search bar for products -->
 <div class="form-group">
-  <input type="text" ng-model="search" class="form-control" placeholder="Search">
+  <input type="text" ng-model="search" value="eye-shadow" class="form-control" placeholder="Search">
 </div>
 
 <!-- products -->
@@ -12,13 +11,13 @@
 
   <img src="{{product.image_link}}" alt="">
 
-  <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
+  <!-- <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
 
   <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
     <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
       <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
       <input type="text" ng-model="ctrl.name" placeholder="{{product.name}}">
       <input type="submit" ng-click="ctrl.editformshow=false">
-    </form>
+    </form> -->
 </div>
 </div>

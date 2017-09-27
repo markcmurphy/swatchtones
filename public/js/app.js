@@ -36,6 +36,49 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'mainController'
     })
 
+    // main
+
+    .state('mascara', {
+      url: '/mascara',
+      templateUrl: './partials/mascara.html',
+      controller: 'mainController'
+    })
+    .state('foundation', {
+      url: '/foundation',
+      templateUrl: './partials/foundation.html',
+      controller: 'mainController'
+    })
+    .state('concealer', {
+      url: '/concealer',
+      templateUrl: './partials/concealer.html',
+      controller: 'mainController'
+    })
+    .state('highlighter-bronzer-blush', {
+      url: '/highlighter-bronzer-blush',
+      templateUrl: './partials/highlighter-bronzer-blush.html',
+      controller: 'mainController'
+    })
+    .state('eye-liner', {
+      url: '/eye-liner',
+      templateUrl: './partials/eye-liner.html',
+      controller: 'mainController'
+    })
+    .state('eye-shadow', {
+      url: '/eye-shadow',
+      templateUrl: './partials/eye-shadow.html',
+      controller: 'mainController'
+    })
+    .state('tools', {
+      url: '/tools',
+      templateUrl: './partials/tools.html',
+      controller: 'mainController'
+    })
+    .state('swatches', {
+      url: '/swatches',
+      templateUrl: './partials/swatches.html',
+      controller: 'mainController'
+    })
+
     .state('singleProduct', {
       url: '/products/:id',
       templateUrl: './partials/product.html',
@@ -78,6 +121,10 @@ app.controller('mainController', ['$http', '$stateParams', function($http, $stat
   this.colors = {};
   this.values = {};
   this.rgb = {};
+
+  this.changeColor = () => {
+
+  }
 
 
   // get swatches
@@ -210,7 +257,6 @@ app.controller('mainController', ['$http', '$stateParams', function($http, $stat
           colors: this.colors
         }
       }).then(response => {
-        console.log(response.data.colors);
         controller.formdata = {};
         this.getProducts();
         this.getSwatches();

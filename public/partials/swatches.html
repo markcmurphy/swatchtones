@@ -1,0 +1,8 @@
+<!-- swatches -->
+<div class="grid">
+  <div class="grid-container" ng-init="ctrl.getProduct(ctrl.activeProduct)">
+    <div class="grid-product">
+  <ul ng-repeat="swatch in ctrl.product.swatches">
+    <li>{{swatch}}</li>
+  </ul>
+  </div>
