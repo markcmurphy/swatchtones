@@ -232,7 +232,11 @@ app.controller('mainController', ['$http', '$stateParams', function($http, $stat
           data: {
             Id: this._id,
             name: this.formdata.name,
-            brand: this.formdata.brand
+            brand: this.formdata.brand,
+            image_link: this.formdata.image_link,
+            description: this.formdata.description,
+            product_type: this.formdata.product_type,
+            product_colors: this.formdata.product_colors
           }
         }).then(response => {
           console.log(response.data);
