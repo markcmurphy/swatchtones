@@ -11,8 +11,8 @@
   <h4><a ui-sref="singleProduct({ id:product._id})">{{product.name}}</a></h4>
   <img src="{{product.image_link}}" alt="">
 
-  <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
 
+  <button class="btn btn-primary btn-sm"ng-click="ctrl.deleteProduct(product)">delete</button>
   <button class="btn btn-primary btn-sm" ng-click="ctrl.editformshow = true">Edit</button>
     <form ng-show="ctrl.editformshow" class="edit-form" ng-submit="ctrl.editProduct(product)">
       <input type="text" ng-model="ctrl.brand" placeholder="{{product.brand}}">
